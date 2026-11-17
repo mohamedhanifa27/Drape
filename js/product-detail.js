@@ -51,7 +51,19 @@ const ProductDetail = {
     // Title, Brand, Category
     const brandEl = document.getElementById("pdpBrand");
     const titleEl = document.getElementById("pdpTitle");
-    if (brandEl) brandEl.textContent = p.brand;
+    if (brandEl) {
+      if (window.Brands) {
+        brandEl.innerHTML = `
+          <a href="shop.html?brand=${encodeURIComponent(p.brand)}" class="pdp-brand-link" title="Explore ${p.brand} Collection">
+            <span class="pdp-brand-icon">${window.Brands.getSvg(p.brand, 22)}</span>
+            <span>${p.brand}</span>
+            <span class="pdp-brand-verified">✓ Certified Authentic</span>
+          </a>
+        `;
+      } else {
+        brandEl.textContent = p.brand;
+      }
+    }
     if (titleEl) titleEl.textContent = p.name;
 
     // Rating

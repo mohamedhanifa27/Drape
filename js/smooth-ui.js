@@ -425,6 +425,7 @@
       const populateProducts = (query = "") => {
         if (!window.PRODUCTS) return;
         const q = query.trim().toLowerCase();
+        const matchedBrands = (q && window.Brands) ? window.Brands.search(q, 2) : [];
         const filtered = window.PRODUCTS.filter(p => {
           if (!q) return p.isTrending || p.isNew;
           return p.name.toLowerCase().includes(q) ||
@@ -432,17 +433,36 @@
                  p.category.toLowerCase().includes(q);
         }).slice(0, 6);
 
-        if (!filtered.length) {
-          productsList.innerHTML = `<div style="padding: 12px; font-size: 0.88rem; color: var(--color-text-muted);">No products found matching "${query}"</div>`;
+        if (!filtered.length && !matchedBrands.length) {
+          productsList.innerHTML = `<div style="padding: 12px; font-size: 0.88rem; color: var(--color-text-muted);">No products or brands found matching "${query}"</div>`;
           return;
         }
 
-        productsList.innerHTML = filtered.map(p => `
+        let html = "";
+        if (matchedBrands.length > 0) {
+          html += matchedBrands.map(bm => `
+            <a href="shop.html?brand=${encodeURIComponent(bm.name)}" class="unlumen-cmd-item" style="background:var(--color-primary-subtle); border-radius:8px; margin-bottom:4px;">
+              <span style="display:flex; align-items:center; gap:8px;">
+                ${window.Brands ? window.Brands.getSvg(bm.name, 20) : ""}
+                <strong>${bm.name}</strong>
+                <span style="font-size:0.75rem; color:var(--color-text-muted);">${bm.brand.tagline || bm.brand.category}</span>
+              </span>
+              <span class="unlumen-cmd-item-meta" style="color:var(--color-primary); font-weight:700;">Brand Partner ↗</span>
+            </a>
+          `).join("");
+        }
+
+        html += filtered.map(p => `
           <a href="product.html?id=${p.id}" class="unlumen-cmd-item">
-            <span>${p.name.length > 50 ? p.name.substring(0, 50) + '...' : p.name}</span>
+            <span style="display:flex; align-items:center; gap:8px;">
+              ${window.Brands ? window.Brands.renderMiniIcon(p.brand, 16) : ""}
+              <span>${p.name.length > 50 ? p.name.substring(0, 50) + '...' : p.name}</span>
+            </span>
             <span class="unlumen-cmd-item-meta">₹${p.price} • ${p.brand}</span>
           </a>
         `).join("");
+
+        productsList.innerHTML = html;
       };
 
       const openMenu = () => {

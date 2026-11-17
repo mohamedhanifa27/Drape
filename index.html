@@ -715,6 +715,7 @@
   <!-- Scripts -->
   <script src="js/vendor/lenis.min.js"></script>
   <script src="data/products.js"></script>
+  <script src="js/brands.js"></script>
   <script src="js/config.js"></script>
   <script src="js/drape-intro.js"></script>
   <script src="js/delivery.js"></script>
@@ -741,13 +742,34 @@
       setHeroSlide(currentSlide);
     }, 5500);
 
-    // Populate Trending Products on Homepage
+    // Populate Trending Products & Brand Marquee on Homepage
     document.addEventListener("DOMContentLoaded", () => {
       const grid = document.getElementById("homeTrendingGrid");
       if (grid && window.PRODUCTS && window.ProductsView) {
         const trending = window.PRODUCTS.filter(p => p.isTrending).slice(0, 8);
         grid.innerHTML = trending.map(p => window.ProductsView.renderCard(p)).join("");
       }
+
+      // Enrich Infinite Brand Marquee with Official Logos & Links
+      document.querySelectorAll(".marquee-track .brand-pill").forEach(pill => {
+        const brandName = pill.textContent.trim();
+        if (window.Brands) {
+          const svg = window.Brands.getSvg(brandName, 22);
+          pill.innerHTML = `${svg}<span>${brandName}</span>`;
+          pill.style.cursor = "pointer";
+          pill.setAttribute("role", "link");
+          pill.setAttribute("tabindex", "0");
+          pill.addEventListener("click", () => {
+            window.location.href = `shop.html?brand=${encodeURIComponent(brandName)}`;
+          });
+          pill.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              window.location.href = `shop.html?brand=${encodeURIComponent(brandName)}`;
+            }
+          });
+        }
+      });
     });
   </script>
 </body>

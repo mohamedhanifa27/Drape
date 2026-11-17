@@ -148,6 +148,11 @@ const CONFIG = {
       minOrder: 1200,
       description: "Flat ₹100 Festive Celebration Discount (min order ₹1200)"
     }
+  },
+
+  // Certified Brand System integration
+  get BRANDS() {
+    return (typeof window !== "undefined" && window.BRANDS) ? window.BRANDS : {};
   }
 };
 

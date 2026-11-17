@@ -277,7 +277,7 @@ const Cart = {
       <div class="cart-drawer-item" data-key="${item.key}">
         <img src="${item.image}" alt="${item.name}" class="drawer-item-img" loading="lazy" onerror="this.src='assets/images/logo.png'">
         <div class="drawer-item-details">
-          <div class="drawer-item-brand">${item.brand}</div>
+          <div class="drawer-item-brand">${window.Brands ? window.Brands.renderMiniIcon(item.brand, 13) : ""}<span>${item.brand}</span></div>
           <h5 class="drawer-item-name">${item.name}</h5>
           <div class="drawer-item-meta">
             <span>Size: <strong>${item.size}</strong></span>

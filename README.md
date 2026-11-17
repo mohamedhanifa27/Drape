@@ -5,13 +5,13 @@
 [![GitHub Repository](https://img.shields.io/badge/GitHub-mohamedhanifa27%2FDrape-blue?logo=github)](https://github.com/mohamedhanifa27/Drape)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Vanilla JS](https://img.shields.io/badge/Stack-Vanilla%20JS%20%7C%20HTML5%20%7C%20CSS3-orange)](index.html)
-[![Live Demo](https://img.shields.io/badge/Live-GitHub%20Pages-brightgreen)](https://mohamedhanifa27.github.io/Drape/)
+[![Live Demo](https://img.shields.io/badge/Live-Netlify-00C7B7?logo=netlify&logoColor=white)](https://drapetextile.netlify.app)
 
 **Drape** is a production-quality, multi-page e-commerce web platform engineered for authentic South Indian family textiles and contemporary apparel. Engineered with semantic HTML5, modern modular CSS, and pure Vanilla JavaScript (zero framework bloat), featuring hardware-accelerated 60fps animations, intelligent live search, and a Tamil Nadu localized logistics engine.
 
 - **Author:** Mohamed Hanifa ([@mohamedhanifa27](https://github.com/mohamedhanifa27))
 - **Repository:** [https://github.com/mohamedhanifa27/Drape](https://github.com/mohamedhanifa27/Drape)
-- **Live Preview:** [https://mohamedhanifa27.github.io/Drape/](https://mohamedhanifa27.github.io/Drape/)
+- **Live Preview:** [https://drapetextile.netlify.app](https://drapetextile.netlify.app)
 
 ---
 

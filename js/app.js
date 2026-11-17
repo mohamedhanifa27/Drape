@@ -177,17 +177,23 @@ const App = {
       let selectedIndex = -1;
 
       const renderZeroState = () => {
+        const getBrandChipIcon = (brandName) => {
+          return window.Brands ? `<span class="chip-brand-icon">${window.Brands.getSvg(brandName, 16)}</span>` : "";
+        };
+
         dropdown.innerHTML = `
           <div class="search-suggestions-wrap">
-            <div class="search-suggestions-title">Trending Searches</div>
+            <div class="search-suggestions-title">Trending Brands & Searches</div>
             <div class="search-tags-grid">
+              <button type="button" class="search-suggestion-chip" data-search="Rare Rabbit">${getBrandChipIcon("Rare Rabbit")}Rare Rabbit</button>
+              <button type="button" class="search-suggestion-chip" data-search="Ramraj">${getBrandChipIcon("Ramraj")}Ramraj Cotton</button>
+              <button type="button" class="search-suggestion-chip" data-search="Allen Solly">${getBrandChipIcon("Allen Solly")}Allen Solly</button>
+              <button type="button" class="search-suggestion-chip" data-search="The Souled Store">${getBrandChipIcon("The Souled Store")}The Souled Store</button>
+              <button type="button" class="search-suggestion-chip" data-search="Jockey">${getBrandChipIcon("Jockey")}Jockey</button>
+              <button type="button" class="search-suggestion-chip" data-search="Otto">${getBrandChipIcon("Otto")}Otto</button>
+              <button type="button" class="search-suggestion-chip" data-search="VNH Naidu Hall">${getBrandChipIcon("VNH Naidu Hall")}VNH Naidu Hall</button>
+              <button type="button" class="search-suggestion-chip" data-search="Maybell">${getBrandChipIcon("Maybell")}Maybell</button>
               <button type="button" class="search-suggestion-chip" data-search="Nighties">✨ Pure Cotton Nighties</button>
-              <button type="button" class="search-suggestion-chip" data-search="Rare Rabbit">👔 Rare Rabbit</button>
-              <button type="button" class="search-suggestion-chip" data-search="Ramraj">🌿 Ramraj Innerwear</button>
-              <button type="button" class="search-suggestion-chip" data-search="Allen Solly">💼 Allen Solly Shirts</button>
-              <button type="button" class="search-suggestion-chip" data-search="The Souled Store">⚡ Graphic Tees</button>
-              <button type="button" class="search-suggestion-chip" data-search="Jockey">🩳 Jockey Briefs</button>
-              <button type="button" class="search-suggestion-chip" data-search="VNH Naidu Hall">🌸 VNH Naidu Hall</button>
             </div>
             <div class="search-suggestions-title">Browse by Category</div>
             <div class="search-tags-grid">
@@ -217,6 +223,8 @@ const App = {
       const doSearch = (query) => {
         if (!window.PRODUCTS) return;
 
+        const matchedBrands = window.Brands ? window.Brands.search(query, 2) : [];
+
         const matches = window.PRODUCTS.filter(p => {
           return (
             p.name.toLowerCase().includes(query) ||
@@ -226,7 +234,28 @@ const App = {
           );
         }).slice(0, 6);
 
-        if (matches.length === 0) {
+        const brandHeaderHtml = matchedBrands.length > 0 ? `
+          <div class="search-brand-matches">
+            <div class="search-brand-match-header">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              <span>Certified Brand Partner</span>
+            </div>
+            ${matchedBrands.map(bm => `
+              <a href="shop.html?brand=${encodeURIComponent(bm.name)}" class="search-brand-card">
+                <div class="search-brand-card-logo">
+                  ${window.Brands.getSvg(bm.name, 36)}
+                </div>
+                <div class="search-brand-card-info">
+                  <span class="search-brand-card-name">${bm.name}</span>
+                  <span class="search-brand-card-tagline">${bm.brand.tagline || bm.brand.category}</span>
+                </div>
+                <span class="search-brand-card-cta">Explore (${bm.count}) →</span>
+              </a>
+            `).join("")}
+          </div>
+        ` : "";
+
+        if (matches.length === 0 && matchedBrands.length === 0) {
           dropdown.innerHTML = `
             <div class="search-no-results">
               No textiles found matching "<strong>${query}</strong>".
@@ -235,30 +264,38 @@ const App = {
           `;
         } else {
           dropdown.innerHTML = `
-            <div class="search-results-header">
-              <span>Matching Products (${matches.length})</span>
-              <span class="results-count-badge">${matches.length} found</span>
-            </div>
-            <div class="search-items-list">
-              ${matches.map((p, i) => `
-                <a href="product.html?id=${p.id}" class="search-result-item" data-index="${i}">
-                  <img src="${p.images[0]}" alt="${p.name}" class="search-thumb" onerror="this.src='assets/images/logo.png'">
-                  <div class="search-item-info">
-                    <div class="search-item-brand">${p.brand} • ${p.category}</div>
-                    <div class="search-item-title">${p.name}</div>
-                    <div class="search-item-price">
-                      <span class="price-val">₹${p.price}</span>
-                      ${p.mrp > p.price ? `<span class="mrp-val">₹${p.mrp}</span>` : ""}
-                      ${p.discount ? `<span class="discount-badge">${p.discount}% OFF</span>` : ""}
+            ${brandHeaderHtml}
+            ${matches.length > 0 ? `
+              <div class="search-results-header">
+                <span>Matching Products (${matches.length})</span>
+                <span class="results-count-badge">${matches.length} found</span>
+              </div>
+              <div class="search-items-list">
+                ${matches.map((p, i) => `
+                  <a href="product.html?id=${p.id}" class="search-result-item" data-index="${i}">
+                    <img src="${p.images[0]}" alt="${p.name}" class="search-thumb" onerror="this.src='assets/images/logo.png'">
+                    <div class="search-item-info">
+                      <div class="search-item-brand">
+                        ${window.Brands ? window.Brands.renderMiniIcon(p.brand, 15) : ""}
+                        <span>${p.brand}</span>
+                        <span style="opacity:0.5;">•</span>
+                        <span>${p.category}</span>
+                      </div>
+                      <div class="search-item-title">${p.name}</div>
+                      <div class="search-item-price">
+                        <span class="price-val">₹${p.price}</span>
+                        ${p.mrp > p.price ? `<span class="mrp-val">₹${p.mrp}</span>` : ""}
+                        ${p.discount ? `<span class="discount-badge">${p.discount}% OFF</span>` : ""}
+                      </div>
                     </div>
-                  </div>
-                  <span class="search-item-arrow">→</span>
-                </a>
-              `).join("")}
-            </div>
-            <div class="search-results-footer">
-              <a href="shop.html?search=${encodeURIComponent(query)}">View all results for "${query}" →</a>
-            </div>
+                    <span class="search-item-arrow">→</span>
+                  </a>
+                `).join("")}
+              </div>
+              <div class="search-results-footer">
+                <a href="shop.html?search=${encodeURIComponent(query)}">View all results for "${query}" →</a>
+              </div>
+            ` : ""}
           `;
         }
         dropdown.classList.add("active");
@@ -439,7 +476,7 @@ const App = {
           ` : ""}
         </div>
         <div class="quickview-details">
-          <div class="qv-brand">${product.brand}</div>
+          <div class="qv-brand" style="display:flex; align-items:center; gap:6px;">${window.Brands ? window.Brands.renderMiniIcon(product.brand, 18) : ""}<span>${product.brand}</span></div>
           <h3 class="qv-title">${product.name}</h3>
           <div class="qv-rating">
             <span class="stars">★★★★★</span>

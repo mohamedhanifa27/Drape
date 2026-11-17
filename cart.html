@@ -244,6 +244,7 @@
 
   <!-- Scripts -->
   <script src="data/products.js"></script>
+  <script src="js/brands.js"></script>
   <script src="js/config.js"></script>
   <script src="js/delivery.js"></script>
   <script src="js/cart.js"></script>
@@ -293,7 +294,7 @@
           <div class="cart-drawer-item" style="padding:16px 0;">
             <img src="${item.image}" alt="${item.name}" class="drawer-item-img" style="width:90px; height:110px;" onerror="this.src='assets/images/logo.png'">
             <div class="drawer-item-details">
-              <div class="drawer-item-brand">${item.brand}</div>
+              <div class="drawer-item-brand">${window.Brands ? window.Brands.renderMiniIcon(item.brand, 14) : ""}<span>${item.brand}</span></div>
               <h4 style="font-size:1.05rem; margin-bottom:4px;">${item.name}</h4>
               <div class="drawer-item-meta">
                 <span>Size: <strong>${item.size}</strong></span>

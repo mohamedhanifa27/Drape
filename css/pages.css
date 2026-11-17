@@ -376,6 +376,11 @@
   align-items: flex-start;
   gap: 12px;
   font-size: 0.95rem;
+  color: var(--color-text-main);
+}
+
+.store-detail-item strong {
+  color: var(--color-text-headings);
 }
 
 .store-detail-item .icon {
@@ -600,10 +605,18 @@
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
-  background-color: #FFFFFF;
+  background-color: var(--color-bg-card, #FFFFFF);
+  color: var(--color-text-main);
   font-weight: 600;
   font-size: 0.875rem;
   transition: all var(--transition-fast);
+}
+
+[data-theme="dark"] .page-btn,
+[data-theme="dark"] .page-num-btn {
+  background-color: #2C2C2E;
+  color: #FAF8F5;
+  border-color: rgba(250, 248, 245, 0.18);
 }
 
 .page-num-btn.active {
@@ -720,11 +733,17 @@
 
 /* Pincode Box */
 .pincode-check-card {
-  background-color: #FFFFFF;
+  background-color: var(--color-bg-card, #FFFFFF);
+  color: var(--color-text-main);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 18px;
   margin: 24px 0;
+}
+
+[data-theme="dark"] .pincode-check-card {
+  background-color: #212124;
+  border-color: rgba(250, 248, 245, 0.15);
 }
 
 .pincode-input-row {
@@ -856,6 +875,51 @@
   background-color: var(--color-success);
   color: #FFFFFF;
   border-color: var(--color-success);
+}
+
+/* Checkout Items Summary */
+.checkout-item-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.co-thumb {
+  width: 48px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.co-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.co-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.co-meta {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.co-item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
 }
 
 /* Step Panels */
@@ -996,13 +1060,20 @@
 .order-success-card {
   max-width: 680px;
   margin: 40px auto 80px auto;
-  background-color: #FFFFFF;
+  background-color: var(--color-bg-card, #FFFFFF);
+  color: var(--color-text-main);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: clamp(32px, 5vw, 56px);
   box-shadow: var(--shadow-xl);
   text-align: center;
   position: relative;
+}
+
+[data-theme="dark"] .order-success-card {
+  background-color: #212124;
+  color: #FAF8F5;
+  border-color: rgba(250, 248, 245, 0.15);
 }
 
 .order-id-badge {

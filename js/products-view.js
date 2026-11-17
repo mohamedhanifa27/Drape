@@ -37,7 +37,7 @@ const ProductsView = {
           ${product.discount > 0 ? `<span class="badge badge-discount">-${product.discount}%</span>` : ""}
           ${product.isNew ? `<span class="badge badge-new">New</span>` : ""}
           ${product.isTrending ? `<span class="badge badge-trending">Hot</span>` : ""}
-          <span class="skiper-42-pill">${product.brand}</span>
+          <span class="skiper-42-pill" style="display:inline-flex; align-items:center; gap:5px;">${window.Brands ? window.Brands.renderMiniIcon(product.brand, 13) : ""}${product.brand}</span>
           
           <button type="button" class="wishlist-btn ${isWishlisted ? "active" : ""}" 
                   data-id="${product.id}" aria-label="Add to Wishlist"
@@ -67,7 +67,7 @@ const ProductsView = {
 
         <div class="card-content">
           <div class="card-meta">
-            <span class="card-brand">${product.brand}</span>
+            <span class="card-brand">${window.Brands ? window.Brands.renderMiniIcon(product.brand, 14) : ""}${product.brand}</span>
             <span class="card-category">${product.category}</span>
           </div>
 
@@ -162,6 +162,13 @@ const ProductsView = {
 
     // Brands
     document.querySelectorAll(".filter-brand-checkbox").forEach(cb => {
+      const label = cb.closest(".filter-checkbox-label");
+      if (label && !label.querySelector(".filter-brand-logo-wrap") && window.Brands) {
+        const wrap = document.createElement("span");
+        wrap.className = "filter-brand-logo-wrap";
+        wrap.innerHTML = window.Brands.getSvg(cb.value, 18);
+        label.insertBefore(wrap, cb.nextSibling);
+      }
       if (this.activeFilters.brands.includes(cb.value)) cb.checked = true;
       cb.addEventListener("change", () => {
         const checked = Array.from(document.querySelectorAll(".filter-brand-checkbox:checked")).map(c => c.value);

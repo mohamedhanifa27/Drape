@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Shopping Bag | Drape Madurai</title>
+    <!-- Webpage Icons / Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/drape-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/smooth-ui.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem("hanifa_theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="header-topbar">
+    <div class="container flex justify-between items-center">
+      <span>🚚 Direct Dispatch from South Masi St, Madurai | Free Shipping on Orders Over ₹999</span>
+      <span class="desktop-only">Store Helpline: <strong>+91 98421 23456</strong></span>
+    </div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="index.html" class="brand-logo" aria-label="Drape Home">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" width="36" height="36">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" height="28">
+      </a>
+
+      <nav class="desktop-nav nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">All Textiles</a>
+        <a href="shop.html?category=Nighties" class="nav-link">Nighties</a>
+        <a href="shop.html?category=Shirts" class="nav-link">Shirts</a>
+        <a href="shop.html?category=Pants" class="nav-link">Pants</a>
+        <a href="shop.html?category=Innerwear" class="nav-link">Innerwear</a>
+        <a href="about.html" class="nav-link">Our Heritage</a>
+        <a href="contact.html" class="nav-link">Store</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button type="button" class="header-action-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="wishlist.html" class="header-action-btn" aria-label="View Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button type="button" class="header-action-btn nav-cart-trigger" onclick="Cart.openDrawer()" aria-label="Open Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="badge-count cart-badge-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <aside class="cart-drawer" id="mobileNavDrawer" style="right:auto; left:0; transform:translateX(-100%);">
+    <div class="drawer-header">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" style="width:32px; height:32px;">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" style="height:26px; width:auto;">
+      </div>
+      <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close Menu">×</button>
+    </div>
+    <div style="padding:20px;">
+      <nav class="flex flex-col gap-4" style="font-size:1.1rem; font-weight:600;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop All Textiles</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html" class="text-primary">Shopping Bag</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Store Location & Map</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="Cart.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button type="button" class="drawer-close-btn" onclick="Cart.closeDrawer()" aria-label="Close Bag">×</button>
+    </div>
+    <div class="cart-drawer-content" id="cartDrawerContent"></div>
+  </aside>
+
+  <!-- MAIN CART PAGE VIEW -->
+  <main class="site-main container" style="padding-top:32px; padding-bottom:80px;">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="font-size:0.85rem; color:var(--color-text-muted); margin-bottom:24px;">
+      <a href="index.html">Home</a> <span style="margin:0 6px;">/</span> 
+      <strong style="color:var(--color-text-main);">Shopping Bag</strong>
+    </nav>
+
+    <h1 style="font-size:2rem; margin-bottom:24px;">Your Shopping Bag</h1>
+
+    <!-- Empty State -->
+    <div id="cartPageEmpty" style="display:none;" class="cart-empty-state">
+      <div class="empty-icon-wrap">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </div>
+      <h3 style="font-size:1.5rem; margin-bottom:8px;">Your shopping bag is currently empty</h3>
+      <p style="color:var(--color-text-muted); margin-bottom:24px;">Explore our pure cotton nighties, Ramraj shirts, and family textiles from Madurai.</p>
+      <a href="shop.html" class="btn btn-primary btn-pill btn-lg">Explore All Textiles →</a>
+    </div>
+
+    <!-- Active Cart Layout -->
+    <div id="cartPageActive" class="checkout-page-grid" style="padding:0;">
+      <!-- Left Column: Item List Table -->
+      <div>
+        <!-- Free Shipping Progress -->
+        <div class="free-shipping-progress" style="border-radius:var(--radius-md); margin-bottom:20px; border:1px solid var(--color-border);" id="cartPageProgressBar"></div>
+
+        <div style="background-color:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm);" id="cartPageItemsList"></div>
+
+        <!-- Available Coupon Suggestions -->
+        <div style="background-color:var(--color-cream); border:1px solid var(--color-border); border-radius:var(--radius-md); padding:16px; margin-top:20px;">
+          <h5 style="margin-bottom:8px; font-family:var(--font-heading);">Available Festive Coupons:</h5>
+          <div class="flex gap-2" style="flex-wrap:wrap;">
+            <button type="button" class="btn btn-sm btn-white" onclick="document.getElementById('couponCodeInput').value='DRAPE10'; applyPageCoupon();">
+              <strong>DRAPE10</strong> (10% OFF)
+            </button>
+            <button type="button" class="btn btn-sm btn-white" onclick="document.getElementById('couponCodeInput').value='HANIFA10'; applyPageCoupon();">
+              <strong>HANIFA10</strong> (10% OFF)
+            </button>
+            <button type="button" class="btn btn-sm btn-white" onclick="document.getElementById('couponCodeInput').value='MADURAI50'; applyPageCoupon();">
+              <strong>MADURAI50</strong> (₹50 OFF min ₹599)
+            </button>
+            <button type="button" class="btn btn-sm btn-white" onclick="document.getElementById('couponCodeInput').value='WELCOME15'; applyPageCoupon();">
+              <strong>WELCOME15</strong> (15% OFF min ₹799)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Order Summary Card -->
+      <div>
+        <div style="background-color:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow-sm); position:sticky; top:100px;">
+          <h3 style="font-size:1.35rem; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--color-border);">
+            Order Summary
+          </h3>
+
+          <!-- Coupon Input Form -->
+          <div style="margin-bottom:20px;">
+            <label class="form-label">Apply Promo / Coupon Code:</label>
+            <div class="flex gap-2">
+              <input type="text" class="form-control" id="couponCodeInput" placeholder="e.g. HANIFA10" style="text-transform:uppercase;">
+              <button type="button" class="btn btn-primary" onclick="applyPageCoupon()">Apply</button>
+            </div>
+            <div id="couponStatusMessage" style="font-size:0.8rem; margin-top:6px;"></div>
+          </div>
+
+          <!-- Breakdown Rows -->
+          <div class="drawer-summary-row">
+            <span>Bag Subtotal (<span id="cartPageCount">0</span> items)</span>
+            <strong id="cartPageSubtotal">₹0</strong>
+          </div>
+
+          <div class="drawer-summary-row" id="cartPageDiscountRow" style="display:none; color:var(--color-success);">
+            <span>Coupon Discount</span>
+            <strong id="cartPageDiscount">-₹0</strong>
+          </div>
+
+          <div class="drawer-summary-row">
+            <span>Estimated Delivery</span>
+            <span id="cartPageDelivery">Calculated at checkout</span>
+          </div>
+
+          <div class="drawer-summary-row total-row">
+            <span>Estimated Total</span>
+            <strong id="cartPageGrandTotal" style="font-size:1.4rem; color:var(--color-primary);">₹0</strong>
+          </div>
+
+          <a href="checkout.html" class="btn btn-primary btn-block btn-pill btn-lg" style="margin-bottom:12px;">
+            Proceed to Secure Checkout →
+          </a>
+
+          <div class="text-center" style="font-size:0.8rem; color:var(--color-text-muted);">
+            🔒 Safe & Secure UPI / COD Checkout • South Masi St, Madurai
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Drape. All rights reserved. Handcrafted for Madurai & Tamil Nadu.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data/products.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/delivery.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/smooth-ui.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    function renderCartPage() {
+      const items = Cart.getItems();
+      const emptyBox = document.getElementById("cartPageEmpty");
+      const activeBox = document.getElementById("cartPageActive");
+
+      if (items.length === 0) {
+        if (emptyBox) emptyBox.style.display = "block";
+        if (activeBox) activeBox.style.display = "none";
+        return;
+      }
+
+      if (emptyBox) emptyBox.style.display = "none";
+      if (activeBox) activeBox.style.display = "grid";
+
+      const totals = Cart.getTotals(false);
+      const threshold = (CONFIG && CONFIG.FREE_DELIVERY_THRESHOLD) || 999;
+      const progressPercent = Math.min(100, Math.round((totals.subtotal / threshold) * 100));
+      const needed = Math.max(0, threshold - totals.subtotal);
+
+      // Progress
+      const progressEl = document.getElementById("cartPageProgressBar");
+      if (progressEl) {
+        progressEl.innerHTML = `
+          <div class="progress-message">
+            ${needed > 0 
+              ? `Add <strong>₹${needed}</strong> more for <strong>FREE Delivery across Tamil Nadu!</strong>` 
+              : `🎉 <strong>Congratulations!</strong> You have unlocked FREE Express Delivery!`
+            }
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width: ${progressPercent}%"></div></div>
+        `;
+      }
+
+      // Items list
+      const listEl = document.getElementById("cartPageItemsList");
+      if (listEl) {
+        listEl.innerHTML = items.map(item => `
+          <div class="cart-drawer-item" style="padding:16px 0;">
+            <img src="${item.image}" alt="${item.name}" class="drawer-item-img" style="width:90px; height:110px;" onerror="this.src='assets/images/logo.png'">
+            <div class="drawer-item-details">
+              <div class="drawer-item-brand">${item.brand}</div>
+              <h4 style="font-size:1.05rem; margin-bottom:4px;">${item.name}</h4>
+              <div class="drawer-item-meta">
+                <span>Size: <strong>${item.size}</strong></span>
+                <span>Color: <strong>${item.color}</strong></span>
+              </div>
+              <div class="drawer-item-pricing">
+                <span class="drawer-item-price" style="font-size:1.15rem;">₹${item.price}</span>
+                ${item.mrp > item.price ? `<span class="drawer-item-mrp">₹${item.mrp}</span>` : ""}
+              </div>
+              <div class="drawer-item-actions">
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" onclick="Cart.updateQuantity('${item.key}', ${item.quantity - 1})">−</button>
+                  <span class="qty-val">${item.quantity}</span>
+                  <button type="button" class="qty-btn" onclick="Cart.updateQuantity('${item.key}', ${item.quantity + 1})">+</button>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline" style="color:var(--color-error); border-color:var(--color-error);" onclick="Cart.removeItem('${item.key}')">
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // Totals
+      document.getElementById("cartPageCount").textContent = totals.itemCount;
+      document.getElementById("cartPageSubtotal").textContent = `₹${totals.subtotal}`;
+
+      const discountRow = document.getElementById("cartPageDiscountRow");
+      const discountVal = document.getElementById("cartPageDiscount");
+      if (totals.discount > 0) {
+        discountRow.style.display = "flex";
+        discountVal.textContent = `-₹${totals.discount} (${totals.coupon.code})`;
+      } else {
+        discountRow.style.display = "none";
+      }
+
+      document.getElementById("cartPageGrandTotal").textContent = `₹${totals.grandTotal}`;
+    }
+
+    function applyPageCoupon() {
+      const code = document.getElementById("couponCodeInput").value.trim();
+      const statusEl = document.getElementById("couponStatusMessage");
+      const result = Cart.applyCoupon(code);
+
+      if (result.success) {
+        statusEl.innerHTML = `<span class="text-success">${result.message}</span>`;
+      } else {
+        statusEl.innerHTML = `<span class="text-error">${result.message}</span>`;
+      }
+      renderCartPage();
+    }
+
+    window.addEventListener("cart:updated", renderCartPage);
+    document.addEventListener("DOMContentLoaded", renderCartPage);
+  </script>
+</body>
+</html>

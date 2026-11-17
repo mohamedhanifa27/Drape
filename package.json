@@ -1,0 +1,29 @@
+{
+  "name": "drape",
+  "version": "1.0.0",
+  "description": "Drape - Contemporary High-Performance E-Commerce Web Platform for South Indian Textiles",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=5500"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedhanifa27/Drape.git"
+  },
+  "keywords": [
+    "drape",
+    "ecommerce",
+    "vanilla-javascript",
+    "jamstack",
+    "textiles",
+    "madurai",
+    "responsive-web-design"
+  ],
+  "author": "Mohamed Hanifa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohamedhanifa27/Drape/issues"
+  },
+  "homepage": "https://mohamedhanifa27.github.io/Drape/"
+}

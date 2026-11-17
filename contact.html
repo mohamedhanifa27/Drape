@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Store & Location Map | Drape Madurai</title>
+  <meta name="description" content="Get in touch with Hanifa Textiles, South Masi Street, Madurai. Store directions, phone numbers, WhatsApp support, and customer enquiries.">
+    <!-- Webpage Icons / Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/drape-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/smooth-ui.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem("hanifa_theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="header-topbar">
+    <div class="container flex justify-between items-center">
+      <span>📍 South Masi Street, Madurai | Open Daily 9:30 AM to 9:30 PM</span>
+      <span class="desktop-only">Store Support: <strong>+91 98421 23456</strong></span>
+    </div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="index.html" class="brand-logo" aria-label="Drape Home">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" width="36" height="36">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" height="28">
+      </a>
+
+      <nav class="desktop-nav nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">All Textiles</a>
+        <a href="shop.html?category=Nighties" class="nav-link">Nighties</a>
+        <a href="shop.html?category=Shirts" class="nav-link">Shirts</a>
+        <a href="shop.html?category=Pants" class="nav-link">Pants</a>
+        <a href="shop.html?category=Innerwear" class="nav-link">Innerwear</a>
+        <a href="about.html" class="nav-link">Our Heritage</a>
+        <a href="contact.html" class="nav-link active">Store</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button type="button" class="header-action-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="wishlist.html" class="header-action-btn" aria-label="View Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button type="button" class="header-action-btn nav-cart-trigger" onclick="Cart.openDrawer()" aria-label="Open Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="badge-count cart-badge-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <aside class="cart-drawer" id="mobileNavDrawer" style="right:auto; left:0; transform:translateX(-100%);">
+    <div class="drawer-header">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" style="width:32px; height:32px;">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" style="height:26px; width:auto;">
+      </div>
+      <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close Menu">×</button>
+    </div>
+    <div style="padding:20px;">
+      <nav class="flex flex-col gap-4" style="font-size:1.1rem; font-weight:600;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop All Textiles</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="text-primary">Store Location & Map</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="Cart.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button type="button" class="drawer-close-btn" onclick="Cart.closeDrawer()" aria-label="Close Bag">×</button>
+    </div>
+    <div class="cart-drawer-content" id="cartDrawerContent"></div>
+  </aside>
+
+  <!-- CONTACT PAGE CONTENT -->
+  <main class="site-main container" style="padding-top:72px; padding-bottom:80px;">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="font-size:0.85rem; color:var(--color-text-muted); margin-bottom:24px;">
+      <a href="index.html">Home</a> <span style="margin:0 6px;">/</span> 
+      <strong style="color:var(--color-text-main);">Store Location & Contact</strong>
+    </nav>
+
+    <div class="section-header text-left" style="margin-bottom:36px;">
+      <span class="section-tagline">We are Here to Help</span>
+      <h1 style="font-size:clamp(1.8rem, 4vw, 2.8rem);">Visit Our Madurai Store or Message Us</h1>
+      <p class="section-subtitle">Whether you need help selecting nighty sizes, festival collections, or tracking delivery across Tamil Nadu, our team is always ready.</p>
+    </div>
+
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:40px; margin-bottom:60px;">
+      <!-- Left Column: Contact Form -->
+      <div style="background-color:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:32px; box-shadow:var(--shadow-sm);">
+        <h3 style="font-size:1.4rem; margin-bottom:18px; color:var(--color-text-headings);">Send a Message</h3>
+        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Your Name <span class="req">*</span></label>
+            <input type="text" class="form-control" id="contactName" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number <span class="req">*</span></label>
+            <input type="tel" class="form-control" id="contactPhone" placeholder="10-digit mobile number" maxlength="10" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="your.email@gmail.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <select class="form-control" id="contactSubject">
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Order Tracking">Delivery / Order Tracking</option>
+              <option value="Size & Fabric Help">Size & Fabric Advice</option>
+              <option value="Wholesale">Bulk / Family Wedding Order</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Message <span class="req">*</span></label>
+            <textarea class="form-control" id="contactMsg" rows="4" placeholder="How can our Madurai team assist you today?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-pill btn-block btn-lg">Send Message to Store Team</button>
+        </form>
+      </div>
+
+      <!-- Right Column: Store Details & Google Maps -->
+      <div class="flex flex-col gap-6">
+        <div style="background-color:var(--color-bg-card); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow-sm);">
+          <h3 style="font-size:1.35rem; margin-bottom:16px; color:var(--color-text-headings);">Showroom Information</h3>
+          <div class="store-detail-list" style="margin:0;">
+            <div class="store-detail-item">
+              <span class="icon">📍</span>
+              <div>
+                <strong>Store Address:</strong><br>
+                South Masi Street, Near Vilakkuthoon, Madurai, Tamil Nadu 625001, India.
+              </div>
+            </div>
+            <div class="store-detail-item">
+              <span class="icon">📞</span>
+              <div>
+                <strong>Phone Numbers:</strong><br>
+                Direct: +91 98421 23456<br>
+                Landline: 0452 2345678
+              </div>
+            </div>
+            <div class="store-detail-item">
+              <span class="icon">⏰</span>
+              <div>
+                <strong>Showroom Hours:</strong><br>
+                Monday – Saturday: 9:30 AM to 9:30 PM<br>
+                Sunday: 10:00 AM to 8:30 PM
+              </div>
+            </div>
+            <div class="store-detail-item">
+              <span class="icon">💬</span>
+              <div>
+                <strong>Instant WhatsApp:</strong><br>
+                Chat directly with our counter staff: +91 98421 23456
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:20px;">
+            <a href="https://maps.app.goo.gl/LUJFigFnc6qnU1Qu6" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-pill btn-block">
+              Open Navigation in Google Maps ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Embedded Map -->
+        <div class="store-map-embed" style="height:260px;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.123456789!2d78.1198!3d9.9155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTQnNTUuOCJOIDc4wrAwNycxMS4zIkU!5e0!3m2!1sen!2sin!4v1600000000000"
+            title="Hanifa Textiles Madurai Map"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Drape. All rights reserved. Handcrafted for Madurai & Tamil Nadu.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data/products.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/smooth-ui.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value;
+      if (window.App) {
+        window.App.showToast(`Vanakkam ${name}! We have received your message. Our Madurai store team will call or WhatsApp you shortly.`, "success", 5000);
+      }
+      document.getElementById("contactForm").reset();
+    }
+  </script>
+</body>
+</html>

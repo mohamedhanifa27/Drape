@@ -1,0 +1,692 @@
+/**
+ * Hanifa Textiles - SmoothUI, Skiper UI, Unlumen UI & Cult UI Component Suite
+ * Incorporating:
+ * - SmoothUI: floating-navbar, theme-toggle, digit-roll, count-badge, content-skeleton,
+ *             pagination, depth-parallax-words, scroll-image-reveal, scroll-progress,
+ *             fluid-hover-highlight, number-flow
+ * - Skiper UI: skiper106 (magnetic badge), skiper26 (masked text reveal),
+ *              skiper42 (interactive card), skiper63 (kinetic marquee)
+ * - Unlumen UI: cursor, command-menu, floating-tooltip, highlight (radial spotlight),
+ *               progressive-blur, switch, tilt-card, velocity-highlight
+ * - Cult UI: cutout-card (architectural notched streetwear card corners)
+ * - Lenis: smooth scrolling integration
+ */
+
+/* ==========================================================================
+   1. SCROLL PROGRESS BAR (SmoothUI: scroll-progress)
+   ========================================================================== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-primary, #FF9500), #FFA834, #FF9F0A);
+  box-shadow: 0 0 12px rgba(255, 149, 0, 0.85);
+  z-index: 100000;
+  pointer-events: none;
+  transition: width 0.08s ease-out;
+}
+
+/* ==========================================================================
+   2. FLOATING UPPER DOCK (SmoothUI: floating-navbar)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 14px;
+  width: calc(100% - 36px);
+  max-width: 1280px;
+  margin: 10px auto 0 auto;
+  border-radius: var(--radius-pill, 9999px);
+  background: rgba(250, 248, 245, 0.82);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(29, 29, 31, 0.08);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.07),
+              0 2px 10px -2px rgba(255, 149, 0, 0.05),
+              inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  padding: 6px 14px;
+  z-index: var(--z-header, 900);
+  transition: max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease,
+              border-color 0.35s ease,
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: max-width, box-shadow;
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(22, 22, 23, 0.82);
+  border: 1px solid rgba(250, 248, 245, 0.10);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.75),
+              0 0 28px -4px rgba(255, 159, 10, 0.10),
+              inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* Scrolled / Floating Dock State */
+.site-header.is-scrolled,
+.site-header.is-floating {
+  max-width: 1220px;
+  padding: 5px 14px;
+  backdrop-filter: blur(36px) saturate(210%);
+  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  box-shadow: 0 22px 48px -10px rgba(0, 0, 0, 0.13),
+              0 4px 16px -2px rgba(255, 149, 0, 0.10),
+              inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="dark"] .site-header.is-scrolled,
+[data-theme="dark"] .site-header.is-floating {
+  background: rgba(20, 20, 21, 0.88);
+  border-color: rgba(250, 248, 245, 0.14);
+  box-shadow: 0 28px 60px -12px rgba(0, 0, 0, 0.85),
+              0 0 34px -2px rgba(255, 159, 10, 0.14),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.site-header .header-inner {
+  height: 52px;
+}
+
+/* Progressive Blur Under Header */
+.progressive-blur-header {
+  position: absolute;
+  inset: -12px -20px;
+  z-index: -1;
+  border-radius: inherit;
+  backdrop-filter: blur(16px);
+  mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   3. FLUID HOVER HIGHLIGHT (SmoothUI: fluid-hover-highlight)
+   ========================================================================== */
+.nav-links {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 3px 4px;
+  border-radius: var(--radius-pill, 9999px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .nav-links {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.fluid-nav-highlight {
+  position: absolute;
+  border-radius: var(--radius-pill, 9999px);
+  background: rgba(255, 149, 0, 0.14);
+  border: 1px solid rgba(255, 149, 0, 0.28);
+  box-shadow: 0 2px 8px rgba(255, 149, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              top 0.2s ease,
+              height 0.2s ease,
+              opacity 0.2s ease;
+  z-index: 0;
+}
+
+[data-theme="dark"] .fluid-nav-highlight {
+  background: rgba(255, 159, 10, 0.20);
+  border-color: rgba(255, 159, 10, 0.40);
+  box-shadow: 0 2px 12px rgba(255, 159, 10, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.fluid-nav-highlight.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-links a {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   4. ANIMATED COUNT BADGE (SmoothUI: count-badge)
+   ========================================================================== */
+.header-badge.is-popping,
+.badge-count.is-popping {
+  animation: countBadgePop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes countBadgePop {
+  0% { transform: scale(0.5); opacity: 0.6; }
+  50% { transform: scale(1.42); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Theme toggle spring rotation */
+.theme-toggle-btn.is-rotating svg {
+  animation: themeRotateSpring 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes themeRotateSpring {
+  0% { transform: rotate(0deg) scale(0.8); }
+  50% { transform: rotate(180deg) scale(1.25); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ==========================================================================
+   5. DIGIT ROLL & NUMBER FLOW (SmoothUI: digit-roll & number-flow)
+   ========================================================================== */
+.number-flow {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.2s ease;
+}
+
+.number-flow.rolling {
+  animation: numberRollPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes numberRollPop {
+  0% { transform: translateY(-4px); opacity: 0.7; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ==========================================================================
+   6. CONTENT SKELETON (SmoothUI: content-skeleton)
+   ========================================================================== */
+.content-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  width: 100%;
+}
+
+.skeleton-card {
+  background: var(--color-bg-card, #FFFFFF);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 190, 180, 0.12) 0%,
+    rgba(242, 118, 94, 0.16) 50%,
+    rgba(200, 190, 180, 0.12) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmerWave 1.6s infinite ease-in-out;
+  border-radius: 8px;
+}
+
+[data-theme="dark"] .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(80, 70, 70, 0.3) 0%,
+    rgba(242, 118, 94, 0.25) 50%,
+    rgba(80, 70, 70, 0.3) 100%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes skeletonShimmerWave {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+}
+
+.skeleton-line-sm {
+  height: 14px;
+  width: 35%;
+}
+
+.skeleton-line-md {
+  height: 20px;
+  width: 85%;
+}
+
+.skeleton-line-price {
+  height: 24px;
+  width: 50%;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   7. INTERACTIVE PILL PAGINATION (SmoothUI: pagination)
+   ========================================================================== */
+.smooth-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--color-bg-card, #FFFFFF);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill, 9999px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  margin-top: 36px;
+}
+
+.smooth-page-btn {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill, 9999px);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-text-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.smooth-page-btn:hover {
+  background: rgba(255, 149, 0, 0.12);
+  color: var(--color-primary, #FF9500);
+  transform: translateY(-1px);
+}
+
+.smooth-page-btn.active {
+  background: var(--color-primary, #FF9500);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(255, 149, 0, 0.4);
+}
+
+/* ==========================================================================
+   8. DEPTH PARALLAX WORDS (SmoothUI: depth-parallax-words)
+   ========================================================================== */
+.depth-parallax-container {
+  position: relative;
+  overflow: visible;
+  perspective: 1200px;
+}
+
+.parallax-layer {
+  display: inline-block;
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.parallax-layer-back {
+  transform: translate3d(var(--px-x, 0), var(--px-y, 0), -40px) scale(0.96);
+  opacity: 0.85;
+}
+
+.parallax-layer-mid {
+  transform: translate3d(calc(var(--px-x, 0) * 1.5), calc(var(--px-y, 0) * 1.5), 0px);
+}
+
+.parallax-layer-front {
+  transform: translate3d(calc(var(--px-x, 0) * 2.2), calc(var(--px-y, 0) * 2.2), 30px);
+  color: var(--color-primary, #FF9500);
+}
+
+/* ==========================================================================
+   9. SCROLL IMAGE REVEAL (SmoothUI: scroll-image-reveal)
+   ========================================================================== */
+.scroll-image-reveal {
+  overflow: hidden;
+  position: relative;
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(20px) scale(0.97);
+  opacity: 0;
+  transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s ease;
+}
+
+.scroll-image-reveal.is-revealed {
+  clip-path: inset(0 0 0% 0);
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   10. UNLUMEN UI: CUSTOM INTERACTIVE CURSOR (@unlumen-ui/cursor) - REMOVED
+   ========================================================================== */
+.unlumen-cursor-dot,
+.unlumen-cursor-ring {
+  display: none !important;
+}
+
+/* ==========================================================================
+   11. UNLUMEN UI: COMMAND MENU SPOTLIGHT (@unlumen-ui/command-menu)
+   ========================================================================== */
+.unlumen-cmd-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999990;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.unlumen-cmd-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.unlumen-cmd-modal {
+  width: 90%;
+  max-width: 640px;
+  background: var(--color-bg-card, #FFFFFF);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl, 24px);
+  box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(242, 118, 94, 0.2);
+  overflow: hidden;
+  transform: scale(0.94) translateY(-14px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.unlumen-cmd-overlay.is-open .unlumen-cmd-modal {
+  transform: scale(1) translateY(0);
+}
+
+.unlumen-cmd-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.unlumen-cmd-header svg {
+  color: var(--color-primary, #FF9500);
+  flex-shrink: 0;
+}
+
+.unlumen-cmd-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+}
+
+.unlumen-cmd-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: var(--color-bg-alt, #F2EFE9);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.unlumen-cmd-body {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 12px 14px;
+}
+
+.unlumen-cmd-group-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 8px 12px 4px 12px;
+}
+
+.unlumen-cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: var(--color-text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.unlumen-cmd-item:hover,
+.unlumen-cmd-item.is-selected {
+  background: rgba(255, 149, 0, 0.12);
+  color: var(--color-primary, #FF9500);
+  transform: translateX(4px);
+}
+
+.unlumen-cmd-item-meta {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.unlumen-cmd-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--color-bg-alt, #FAF4EB);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   12. UNLUMEN UI: 3D TILT CARD & SPOTLIGHT (@unlumen-ui/tilt-card & @unlumen-ui/highlight)
+   ========================================================================== */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.tilt-card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.tilt-card:hover .tilt-card-glare {
+  opacity: 1;
+}
+
+[data-theme="dark"] .tilt-card-glare {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(242, 118, 94, 0.22) 0%,
+    rgba(242, 118, 94, 0) 70%
+  );
+}
+
+/* Velocity highlight glow on active cards */
+.velocity-highlight {
+  box-shadow: 0 0 calc(var(--scroll-velocity, 0) * 1.5px) rgba(242, 118, 94, 0.4);
+}
+
+/* ==========================================================================
+   13. CULT UI: CUTOUT CARD (@cult-ui/cutout-card)
+   ========================================================================== */
+.cutout-card {
+  position: relative;
+  clip-path: polygon(
+    0 16px,
+    16px 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%
+  );
+  border-radius: 0 !important;
+}
+
+.cutout-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-top: 2px solid var(--color-primary, #FF9500);
+  border-left: 2px solid var(--color-primary, #FF9500);
+  pointer-events: none;
+}
+
+.cutout-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border-bottom: 2px solid var(--color-primary, #FF9500);
+  border-right: 2px solid var(--color-primary, #FF9500);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   14. SKIPER UI COMPONENTS (@skiper-ui: skiper106, skiper26, skiper42, skiper63)
+   ========================================================================== */
+/* skiper106: Magnetic Interactive Pill Badge */
+.skiper-106-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill, 9999px);
+  background: rgba(255, 149, 0, 0.12);
+  border: 1px solid rgba(255, 149, 0, 0.32);
+  color: var(--color-primary, #FF9500);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.skiper-106-badge:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 149, 0, 0.35);
+  background: var(--color-primary, #FF9500);
+  color: #FFFFFF;
+}
+
+/* skiper26: Staggered Masked Text Reveal */
+.skiper-26-reveal {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.skiper-26-reveal .word {
+  display: inline-block;
+  transform: translateY(115%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skiper-26-reveal.is-revealed .word {
+  transform: translateY(0);
+}
+
+/* skiper42: Interactive Product Card Details Pill */
+.skiper-42-pill {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(29, 29, 31, 0.88);
+  color: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill, 9999px);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+[data-theme="dark"] .skiper-42-pill {
+  background: rgba(44, 44, 46, 0.90);
+  color: var(--color-primary, #FF9F0A);
+}
+
+/* skiper63: Infinite Kinetic Ribbon Marquee */
+.skiper-63-ribbon {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 16px 0;
+  background: var(--color-bg-topbar, #1D1D1F);
+  color: var(--theme-secondary-30, #FAF8F5);
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.skiper-63-track {
+  display: inline-flex;
+  gap: 48px;
+  animation: skiperMarquee 24s linear infinite;
+  will-change: transform;
+}
+
+.skiper-63-ribbon:hover .skiper-63-track {
+  animation-play-state: paused;
+}
+
+@keyframes skiperMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   15. ACCESSIBILITY OVERRIDES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-image-reveal,
+  .skiper-26-reveal .word,
+  .tilt-card {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+}

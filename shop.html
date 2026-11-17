@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Pure Cotton Nighties, Shirts & Family Textiles | Drape Madurai</title>
+  <meta name="description" content="Browse authentic Madurai cotton nighties, Ramraj festive shirts, Raymond trousers and branded innerwear. Filter by brand, price, fabric and size with fast South India delivery.">
+    <!-- Webpage Icons / Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/drape-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/smooth-ui.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem("hanifa_theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="header-topbar">
+    <div class="container flex justify-between items-center">
+      <span>🚚 Direct Dispatch from Madurai Store | Free Delivery on Orders Over ₹999</span>
+      <span class="desktop-only">Need help sizing? Call our team: <strong>+91 98421 23456</strong></span>
+    </div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="index.html" class="brand-logo" aria-label="Drape Home">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" width="36" height="36">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" height="28">
+      </a>
+
+      <nav class="desktop-nav nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">All Textiles</a>
+        <a href="shop.html?category=Nighties" class="nav-link">Nighties</a>
+        <a href="shop.html?category=Shirts" class="nav-link">Shirts</a>
+        <a href="shop.html?category=Tees" class="nav-link">Tees</a>
+        <a href="shop.html?category=Pants" class="nav-link">Pants</a>
+        <a href="shop.html?category=Innerwear" class="nav-link">Innerwear</a>
+        <a href="about.html" class="nav-link">Our Heritage</a>
+        <a href="contact.html" class="nav-link">Store</a>
+      </nav>
+
+      <div class="header-search-wrap">
+        <div class="header-search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="header-search-input" placeholder="Search cotton, shirts, nighties..." aria-label="Search catalog">
+        </div>
+        <div class="search-results-dropdown"></div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button type="button" class="header-action-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="wishlist.html" class="header-action-btn" aria-label="View Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button type="button" class="header-action-btn nav-cart-trigger" onclick="Cart.openDrawer()" aria-label="Open Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="badge-count cart-badge-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Nav Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <aside class="cart-drawer" id="mobileNavDrawer" style="right:auto; left:0; transform:translateX(-100%);">
+    <div class="drawer-header">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" style="width:32px; height:32px;">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" style="height:26px; width:auto;">
+      </div>
+      <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close Menu">×</button>
+    </div>
+    <div style="padding:20px;">
+      <nav class="flex flex-col gap-4" style="font-size:1.1rem; font-weight:600;">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="text-primary">All Textiles</a>
+        <a href="shop.html?category=Nighties">Nighties Collection</a>
+        <a href="shop.html?category=Shirts">Men's Shirts</a>
+        <a href="shop.html?category=Pants">Pants & Trousers</a>
+        <a href="shop.html?category=Innerwear">Family Innerwear</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html">Shopping Bag</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Store Location & Map</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="Cart.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button type="button" class="drawer-close-btn" onclick="Cart.closeDrawer()" aria-label="Close Bag">×</button>
+    </div>
+    <div class="cart-drawer-content" id="cartDrawerContent"></div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewOverlay"></div>
+  <div class="quickview-modal" id="quickViewModal">
+    <button type="button" class="modal-close-btn" id="quickViewClose" aria-label="Close Modal">×</button>
+    <div id="quickViewContent"></div>
+  </div>
+
+  <!-- Filter Drawer Overlay for Mobile -->
+  <div class="filter-drawer-overlay" id="filterDrawerOverlay"></div>
+
+  <!-- MAIN CATALOG VIEW -->
+  <main class="site-main container">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" style="padding-top:20px; font-size:0.85rem; color:var(--color-text-muted);">
+      <a href="index.html">Home</a> <span style="margin:0 6px;">/</span> 
+      <strong style="color:var(--color-text-main);">Textile Catalog</strong>
+    </nav>
+
+    <div class="shop-page-wrap">
+      <!-- SIDEBAR FILTERS -->
+      <aside class="filter-sidebar" id="shopFilterSidebar">
+        <div class="filter-sidebar-header">
+          <h3 style="font-size:1.15rem; font-family:var(--font-heading);">Filter Catalog</h3>
+          <button type="button" class="clear-all-link clear-filters-btn">Clear All</button>
+          <button type="button" class="drawer-close-btn desktop-only-hidden" id="closeFilterDrawer" style="display:none;" aria-label="Close Filter">×</button>
+        </div>
+
+        <!-- Categories -->
+        <div class="filter-section">
+          <h4 class="filter-title">Textile Category</h4>
+          <div class="filter-checkbox-list">
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-category-checkbox" value="Nighties">
+              <span>Cotton Nighties (12)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-category-checkbox" value="Shirts">
+              <span>Men's Shirts (12)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-category-checkbox" value="Tees">
+              <span>Streetwear Tees (8)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-category-checkbox" value="Pants">
+              <span>Pants & Trousers (10)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-category-checkbox" value="Innerwear">
+              <span>Family Innerwear (18)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Brand Filter (Strictly Grouped by Category) -->
+        <div class="filter-section">
+          <h4 class="filter-title">Certified Brands</h4>
+          <div class="filter-checkbox-list">
+            <div style="font-size:0.75rem; font-weight:700; color:var(--color-primary-cta); text-transform:uppercase; margin-top:4px;">Nighties</div>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="VNH Naidu Hall"><span>VNH Naidu Hall</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Maybell"><span>Maybell</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Mangai"><span>Mangai</span></label>
+
+            <div style="font-size:0.75rem; font-weight:700; color:var(--color-primary-cta); text-transform:uppercase; margin-top:8px;">Shirts</div>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Allen Solly"><span>Allen Solly</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Rare Rabbit"><span>Rare Rabbit</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Otto"><span>Otto</span></label>
+
+            <div style="font-size:0.75rem; font-weight:700; color:var(--color-primary-cta); text-transform:uppercase; margin-top:8px;">Tees</div>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="The Souled Store"><span>The Souled Store</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Benetton"><span>Benetton</span></label>
+
+            <div style="font-size:0.75rem; font-weight:700; color:var(--color-primary-cta); text-transform:uppercase; margin-top:8px;">Innerwear</div>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Viking"><span>Viking</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Poomex"><span>Poomex</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Kambit"><span>Kambit</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Prithvi"><span>Prithvi</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Ramraj"><span>Ramraj</span></label>
+            <label class="filter-checkbox-label"><input type="checkbox" class="filter-brand-checkbox" value="Jockey"><span>Jockey</span></label>
+          </div>
+        </div>
+
+        <!-- Price Range Slider -->
+        <div class="filter-section">
+          <div class="flex justify-between items-center">
+            <h4 class="filter-title" style="margin-bottom:0;">Maximum Price</h4>
+            <span class="price-display-val" id="priceRangeDisplay">Up to ₹3000</span>
+          </div>
+          <input type="range" class="price-range-slider" id="priceRangeInput" min="300" max="3000" step="50" value="3000">
+          <div class="flex justify-between" style="font-size:0.75rem; color:var(--color-text-light);">
+            <span>₹300</span>
+            <span>₹3000</span>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="filter-section">
+          <h4 class="filter-title">Customer Rating</h4>
+          <div class="flex flex-col gap-2">
+            <label class="filter-checkbox-label">
+              <input type="radio" name="ratingFilter" class="filter-rating-radio" value="0" checked>
+              <span>All Ratings</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="radio" name="ratingFilter" class="filter-rating-radio" value="4.5">
+              <span>★ 4.5 & Above (Top Rated)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="radio" name="ratingFilter" class="filter-rating-radio" value="4.0">
+              <span>★ 4.0 & Above</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- CATALOG PRODUCTS AREA -->
+      <section class="catalog-content-area">
+        <!-- Toolbar -->
+        <div class="shop-toolbar">
+          <div id="catalogResultsCount" style="font-size:0.95rem; color:var(--color-text-main);">
+            Showing authentic textiles...
+          </div>
+
+          <div class="shop-controls">
+            <!-- Mobile Filter Trigger -->
+            <button type="button" class="btn btn-sm btn-white btn-filter-trigger-mobile" id="openFilterDrawer" style="display:none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+              Filter & Sort
+            </button>
+
+            <!-- Sorter -->
+            <select class="sort-select" id="shopSortSelect" aria-label="Sort products">
+              <option value="featured">Sort by: Featured Picks</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Customer Rating</option>
+              <option value="discount">Biggest Discount</option>
+              <option value="newest">New Arrivals</option>
+            </select>
+
+            <!-- View Toggle -->
+            <div class="view-mode-toggle">
+              <button type="button" class="view-btn active" id="viewGridBtn" aria-label="Grid View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              </button>
+              <button type="button" class="view-btn" id="viewListBtn" aria-label="List View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Pills -->
+        <div id="activeFilterPills" style="display:none;"></div>
+
+        <!-- Products Grid -->
+        <div class="products-grid mode-grid" id="shopProductsGrid"></div>
+
+        <!-- Pagination -->
+        <div id="shopPagination"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="flex items-center gap-2" style="margin-bottom:12px;">
+            <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" style="width:36px; height:36px;">
+            <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" style="height:28px; width:auto;">
+          </div>
+          <p class="footer-tagline">
+            Madurai's premier family textile showroom. Curating authentic South Indian nighties, traditional festive shirts, formal trousers, and comfort innerwear since 1985.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=Nighties">Cotton Nighties</a></li>
+            <li><a href="shop.html?category=Shirts">Men's Shirts</a></li>
+            <li><a href="shop.html?category=Pants">Pants & Chinos</a></li>
+            <li><a href="shop.html?category=Innerwear">Family Innerwear</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Store Location & Map</a></li>
+            <li><a href="about.html">About Drape</a></li>
+            <li><a href="cart.html">View Shopping Bag</a></li>
+            <li><a href="wishlist.html">Saved Wishlist</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Madurai Showroom</h4>
+          <div class="footer-contact-item">
+            <span>📍</span>
+            <span>South Masi Street, Near Vilakkuthoon, Madurai 625001</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>📞</span>
+            <span>+91 98421 23456 / 0452 2345678</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Drape. All rights reserved. Handcrafted for Madurai & Tamil Nadu.</div>
+        <div class="footer-payment-badges">
+          <span class="pay-badge">UPI / GPay</span>
+          <span class="pay-badge">PhonePe</span>
+          <span class="pay-badge">Paytm</span>
+          <span class="pay-badge">Cash on Delivery</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Action -->
+  <a href="#" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Drape on WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zM12.04 20.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.4 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.26-8.24 8.26zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.2-.59.2-1.09.14-1.19-.06-.1-.22-.16-.47-.28z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Chat with our Madurai store</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="data/products.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/delivery.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/products-view.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/smooth-ui.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      ProductsView.initCatalogPage();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drape Madurai | Premium Family Textiles, Pure Cotton Nighties & Shirts</title>
+  <meta name="description" content="Hanifa Textiles, Madurai's trusted family textile destination on South Masi Street since 1985. Shop pure cotton nighties, Ramraj shirts, Raymond trousers & branded innerwear with fast delivery.">
+  <meta name="keywords" content="Hanifa Textiles, Madurai Textiles, Cotton Nighties, Ramraj Shirts, Viking Nighty, Poomex, South Masi Street Madurai, Tamil Nadu Textiles">
+  <meta name="author" content="Mohamed Hanifa">
+  <link rel="canonical" href="https://hanifatextiles.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hanifa Textiles Madurai | Authentic Cotton Family Textiles">
+  <meta property="og:description" content="Shop South India's beloved nighties, formal shirts, chinos and innerwear directly from our South Masi Street store in Madurai.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/logo.png">
+
+    <!-- Webpage Icons / Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/drape-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/smooth-ui.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- JSON-LD Local Business Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "Hanifa Textiles",
+    "image": "https://hanifatextiles.com/assets/images/logo.png",
+    "telephone": "+91-98421-23456",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "South Masi Street, Near Vilakkuthoon",
+      "addressLocality": "Madurai",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "625001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 9.9155,
+      "longitude": 78.1198
+    },
+    "url": "https://hanifatextiles.com",
+    "priceRange": "₹280 - ₹2500"
+  }
+  </script>
+  <!-- Fabric Background Canvas Styles -->
+  <style>
+    #fabric { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; pointer-events: none; }
+    .no-gl #fabric { display: none; }
+    /* Make page content sit above the canvas with readable backgrounds */
+    .site-main, .site-footer, .header-topbar { position: relative; z-index: 1; }
+    /* Body becomes transparent so canvas shows; fallback gradient for no-WebGL */
+    body { background: transparent; }
+    .no-gl body { background-color: var(--color-bg); }
+    .site-main > section,
+    .site-main > .container,
+    .site-main > div:not(.skiper-63-ribbon) {
+      background-color: rgba(var(--fabric-overlay-rgb, 250, 248, 245), 0.92);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    [data-theme="dark"] .site-main > section,
+    [data-theme="dark"] .site-main > .container,
+    [data-theme="dark"] .site-main > div:not(.skiper-63-ribbon) {
+      background-color: rgba(22, 22, 23, 0.92);
+    }
+    /* Hero sits directly on the fabric — no overlay needed */
+    .hero-section { background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    /* Ribbon marquee stays transparent */
+    .skiper-63-ribbon { background-color: transparent !important; backdrop-filter: none !important; }
+  </style>
+
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem("hanifa_theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Fabric Closeup Loop Background Canvas -->
+  <canvas id="fabric" aria-hidden="true"></canvas>
+
+  <!-- Drape Cloth Intro Animation (drape-intro-animation.html) -->
+  <div id="drape-intro" role="img" aria-label="drape — Hanifa Textiles">
+    <div class="intro-stage">
+      <svg class="intro-logo" viewBox="53 37 996 374" aria-hidden="true">
+        <path class="d-top" fill-rule="evenodd" d="M119.1,287.9C118.3,287.4 113,281.5 111.1,279C105.7,272 100.7,262.6 97.5,253.1C96.5,250.2 94.4,241.7 94,239.1C93.8,238 93.6,236.4 93.5,235.5C93.1,233.1 93.1,219.7 93.4,216.4C93.9,212.1 94.2,210.4 94.4,209.8C94.6,209.4 94.8,208.6 94.8,207.9C95,206.5 95.2,205.8 96.8,200.6C98.9,193.4 103.5,183.4 107.1,178.1C113.4,168.8 118,163.6 124.8,157.5C137.1,146.8 153.8,138.8 170.2,135.7C172.1,135.3 174.6,134.8 175.9,134.6C177.9,134.2 180.9,134.1 213.5,134C248.1,133.9 248.8,133.9 249.2,133.4C249.4,133 249.5,130.9 249.5,121.5C249.5,114.9 249.6,109.8 249.8,109.2C249.9,108.8 250.2,107.5 250.4,106.4C252.4,95.6 259.2,86.5 269,81.5C273.2,79.4 275.6,78.7 281.4,77.8C285.5,77.1 302.5,77 303.4,77.6C303.8,77.9 303.8,79.1 303.7,113.3C303.5,147.2 303.4,152.3 302.8,155C300.7,163.4 296.8,170.4 291.1,176.1C286.3,180.9 279.8,185.3 274,187.7C266.9,190.7 263.7,191.5 254.9,192.7C254.2,192.7 240,192.9 223.4,193C192.8,193.1 189.5,193.2 187,194.1C186.8,194.2 185.5,194.5 184,194.8C169.1,197.6 153.1,206.9 141.9,219.1C132.1,229.8 125.8,240.5 121.4,253.4C120.2,256.8 118.8,263.4 118.8,265.2C118.8,265.7 118.6,266.7 118.3,267.5C118,268.7 118,269.7 118.1,274.5C118.2,280.3 118.5,282.2 119.7,286.2C120.4,288.5 120.3,288.7 119.1,287.9Z"/>
+        <path class="rise"  fill-rule="evenodd" d="M154.2,306.2C145.8,305.3 136.6,301.8 129.5,296.7C122,291.3 119.9,289.2 120.9,288.2C121.2,287.9 121.4,287 121.5,285C122.1,276.5 127,266.8 134.4,259.4C141.3,252.4 148.8,247.4 158.8,243.2C165.7,240.3 177.5,237 184.6,236C185.6,235.9 187.5,235.6 188.9,235.4C193.5,234.7 195.4,234.5 196.9,234.5C197.7,234.5 199,234.4 199.8,234.2C200.5,234.1 202.1,233.9 203.2,233.8C205.6,233.5 208.6,233 211.8,232.4C212.9,232.2 214.5,231.9 215.2,231.8C215.9,231.6 216.9,231.4 217.4,231.3C217.9,231.2 219.3,230.8 220.4,230.6C228.3,228.9 240,224.7 248.6,220.4C272.7,208.4 291.2,191.5 300.7,172.7C302.8,168.6 302.9,168.4 303.2,169.4C303.9,171.1 303.4,224.3 302.8,227.9C302.6,228.6 302.4,230.2 302.1,231.6C301.1,238 298.9,245.1 295.8,252.2C293.8,256.8 293.5,257.3 286.9,267.8C283.6,273.1 274.6,282.7 267.8,288.1C263.4,291.6 255.7,296.4 250.8,298.7C245.5,301.1 237.4,303.8 232.4,304.8C231.7,304.9 230.3,305.2 229.4,305.4C225.1,306.2 221.7,306.3 188.8,306.4C170.8,306.4 155.3,306.3 154.2,306.2Z"/>
+        <path class="drop" style="--i:1" fill-rule="evenodd" d="M315.4,306.2C310.8,306.1 310.6,306.1 310.4,305.6C310,304.8 310.1,201.8 310.5,198.6C311,194.7 311.6,191 312.3,188.4C312.4,187.8 312.7,186.8 312.9,186C314.3,180.1 318.5,170.7 322.2,165.4C330.9,152.8 341.3,144.6 355.5,138.9C358.8,137.6 364.1,136 365.1,136C365.4,136 366,135.9 366.4,135.7C367.2,135.4 369.3,135.1 374.5,134.5C378.3,134.1 380.6,134 404.6,134C424.5,134 430.7,134.1 430.9,134.3C431.3,134.7 431.4,158.2 431,161.6C430.1,170.6 425.5,176.8 416.4,181.8C411.5,184.6 407.9,185.2 398.7,185.3C390.7,185.3 387.1,185.9 381.8,188.2C372.6,192.2 366.3,199.3 363.8,208.5C362.4,213.7 362.4,210.2 362.4,259.6C362.4,284.6 362.2,305.3 362.1,305.5C362,305.8 361.8,306 361.5,306.1C361.1,306.3 322.4,306.4 315.4,306.2Z"/>
+        <path class="drop" style="--i:2" fill-rule="evenodd" d="M504.6,309.8C504.2,309.6 503.3,309.6 502.6,309.5C494.8,309.3 482.1,305.7 471.7,300.8C456.5,293.5 441.3,278.7 434.3,264.2C431.6,258.5 431,257.2 429.4,252.9C426.9,245.9 424.8,236.3 424.8,231.2C424.8,230.3 424.6,229.2 424.5,228.9C424.2,228 424.1,218.5 424.5,215.9C424.6,214.6 424.9,212.6 425,211.4C425.4,207.4 425.7,206.3 427.1,200.2C427.5,198.8 427.9,197.2 428,196.8C428.1,196.3 428.6,194.8 429.1,193.5C437.1,171.7 449.7,156.3 468.5,145.5C477.7,140.2 489.7,135.9 499.6,134.4C501,134.2 503.1,133.8 504.4,133.6C510.9,132.6 526.6,132.7 533.7,133.8C537.7,134.4 538.7,134.6 539.9,134.8C556.3,138.2 570.3,144.9 582.4,155.1C588.1,159.8 590.5,162.4 595.3,168.5C599.7,174.2 604,181.9 606.8,189C610.2,197.6 611.2,201.3 612.3,208.1C612.4,209.1 612.7,210.9 612.9,212.2C613.5,215.7 613.7,305.1 613.2,305.8C612.9,306.3 611.9,306.3 587.7,306.3C567.4,306.4 562.5,306.3 562.2,306.1C562,305.8 561.8,304.2 561.8,299.9C561.6,293 561.7,293.2 558.7,295.7C553.7,299.7 544,304.7 537.4,306.6C533,307.9 525.6,309.2 520.1,309.7C517,310 505.8,310 504.6,309.8ZM521.8,261.8C535.3,260.6 546.7,254.1 553.9,243.3C556,240.3 558.3,235.4 558.9,232.9C559.1,232.1 559.4,230.9 559.6,230.4C559.8,229.9 560,229.1 560,228.5C560,228 560.2,227.1 560.4,226.4C561.4,223.6 560.3,214.2 558.3,208.8C556.4,203.5 553.3,198.8 548.9,194.4C546.6,192.2 542,188.4 541,188.1C540.8,188 540.2,187.6 539.6,187.3C537,185.6 529.7,183 526.6,182.6C525.9,182.5 524.7,182.3 523.9,182.1C518.1,180.8 507.7,182.6 500.1,186.2C489.4,191.4 481,201.6 478.3,212.8C475.4,224.4 477.5,234.7 484.7,245.1C490.4,253.3 501.2,259.8 511.8,261.3C513.6,261.6 515.2,261.8 515.4,261.9C515.8,262 519,262 521.8,261.8Z"/>
+        <path class="drop" style="--i:3" fill-rule="evenodd" d="M625.9,370.7C625.4,370.3 625.2,313.3 625.7,310.1C626.5,305.2 628.7,300.8 633,294.8C642.7,281.7 664.7,268.7 686.6,263.3C690.6,262.2 692.1,262 696.2,261.5C697.4,261.4 698.5,261.2 698.8,261.1C699.7,260.8 706.7,260.4 716.5,260.3L727.1,260.1L730.6,259.3C741.2,257 749.2,251.9 755.4,243.5C761.3,235.6 763.9,222.9 761.6,213.9C758.1,200.8 751,192.2 738.7,186.4C733.2,183.8 728.4,182.8 722,182.8C717.6,182.8 717.2,182.8 712,183.9C706,185.2 699.4,188.5 694.6,192.5C687.4,198.6 682.8,205.4 679.9,214.4C676.7,224.2 676.9,223.6 673.8,228.9C671.8,232.3 668.2,237.5 666.1,240C662.1,245.1 659,248.8 657.2,250.8C656.2,251.9 654.9,253.5 654.4,254.2C653.8,254.9 653.3,255.5 653.2,255.5C653.2,255.5 651.5,257.3 649.6,259.4C647.7,261.6 644.9,264.7 643.4,266.4C641.9,268 639.9,270.4 638.9,271.8C637.9,273.1 636.3,275.1 635.3,276.4C632.8,279.6 631,282.4 628.5,287.6C627,290.7 626.3,292 626,291.9C625.2,291.8 625.3,219.5 626.1,214.5C627.2,208 628.2,203.6 630,197.6C631.6,192.5 634.3,186.8 638.1,180.1C650.6,158.4 671,143.1 696.8,135.9C698.9,135.3 704.4,134.3 708.9,133.6C717.4,132.4 733.6,132.8 742,134.5C748.9,135.9 754.5,137.6 761.6,140.5C770.2,144 777.2,148.4 786,155.7C791.4,160 799.5,169.8 803.2,176.1C814.6,195.7 818.2,216.9 814,239.2C811.4,252.5 805.9,264.7 797.5,275.8C794.8,279.2 787,287.4 784.2,289.6C772.8,298.5 761.7,304.1 749.5,307.1C745.6,308.1 744.2,308.3 737.5,309.2C732,310 724.1,310.2 719.5,309.7C718.2,309.6 715.2,309.3 712.9,309.1C710.5,308.9 708.1,308.6 707.5,308.4C705.7,308 678.8,307.9 678.1,308.4C677.6,308.7 677.6,309.2 677.5,339.5C677.4,364.2 677.3,370.3 677,370.6C676.6,371 626.6,371.2 625.9,370.7Z"/>
+        <path class="drop" style="--i:4" fill-rule="evenodd" d="M907,309.7C892.8,308.1 886.2,306.5 876.3,302.3C868.3,299 864.1,296.5 855,289.8C849.6,285.8 840.8,276.1 837,270.1C831.6,261.4 828,253.5 825.6,244.8C824.5,240.8 823.3,233.8 823.2,231.8C823.2,231.1 823.1,229.6 822.9,228.6C822.1,225.1 822.7,212.6 823.9,206.5C826,195.4 830.9,183 836.6,174.6C840.7,168.5 847.5,160.6 851.8,156.9C863,147.3 871.6,142.4 885.1,137.7C889.5,136.2 890.6,135.9 896,134.9C897.7,134.5 900,134.1 901.1,133.8C907.1,132.7 925.9,132.6 931,133.7C931.6,133.9 933.2,134.2 934.6,134.4C953.7,137.6 972,147.3 985.2,161.4C998.6,175.5 1006.4,192.9 1008.8,213.9C1009.5,220.1 1009.2,236 1008.4,237.2C1008.1,237.6 1004.3,237.6 942.9,237.7C892.1,237.7 877.6,237.8 877.3,238C876.5,238.8 878.6,244 881.7,248.6C891.2,262.8 910,269.2 928.5,264.5C935.9,262.6 943.3,258.1 948.6,252.2C949.5,251.1 950.6,250.2 951.1,250C952.2,249.6 1004.3,249.7 1004.7,250.1C1005.2,250.5 1005.1,251.2 1003.8,254.5C997.6,270.1 987.5,283.1 974.1,292.7C966.9,297.8 959.2,301.8 950.9,304.7C945.2,306.6 934.5,308.9 927.9,309.5C924.6,309.9 909.2,310 907,309.7ZM954.5,202.8C955,202.3 954.5,200.7 953,197.6C948.2,187.6 938,179.9 925.8,177.1C921.8,176.2 914.2,175.7 912.3,176.3C911.7,176.5 910.3,176.8 909.4,176.9C907.6,177 906.2,177.4 902,178.7C894.5,180.9 886.9,186.6 881.9,193.5C879.9,196.3 877.7,200.8 877.6,202L877.6,202.9L879.5,203C883.4,203.3 954.2,203.2 954.5,202.8Z"/>
+      </svg>
+      <div class="intro-subtitle">
+        <span>Hanifa Textiles</span>
+        <span class="sub-sep">•</span>
+        <span>Madurai</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Announcement Bar -->
+  <div class="header-topbar">
+    <div class="container flex justify-between items-center">
+      <span>✨ Grand Chithirai Festival Collection is LIVE! | Free Delivery on Orders Above ₹999</span>
+      <span class="desktop-only">Call Store: <strong>+91 98421 23456</strong> | South Masi St, Madurai</span>
+    </div>
+  </div>
+
+  <!-- Sticky Glass Navbar -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Mobile Menu Button -->
+      <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Drape Home">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" width="36" height="36">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" height="28">
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="desktop-nav nav-links" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">All Textiles</a>
+        <a href="shop.html?category=Nighties" class="nav-link">Nighties</a>
+        <a href="shop.html?category=Shirts" class="nav-link">Shirts</a>
+        <a href="shop.html?category=Tees" class="nav-link">Tees</a>
+        <a href="shop.html?category=Pants" class="nav-link">Pants</a>
+        <a href="shop.html?category=Innerwear" class="nav-link">Innerwear</a>
+        <a href="about.html" class="nav-link">Our Heritage</a>
+        <a href="contact.html" class="nav-link">Store</a>
+      </nav>
+
+      <!-- Live Search Box with Autocomplete -->
+      <div class="header-search-wrap">
+        <div class="header-search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="header-search-input" placeholder="Search nighties, shirts, brands..." aria-label="Search catalog">
+          <button type="button" class="unlumen-cmd-kbd" data-open-cmd aria-label="Open command palette" title="Press Ctrl+K to search">⌘K</button>
+        </div>
+        <div class="search-results-dropdown"></div>
+      </div>
+
+      <!-- Action Icons (Wishlist, Cart) -->
+      <div class="header-actions">
+        <!-- Theme Toggle Button -->
+        <button type="button" class="header-action-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <a href="wishlist.html" class="header-action-btn" aria-label="View Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge-count wishlist-badge-count" style="display:none;">0</span>
+        </a>
+
+        <button type="button" class="header-action-btn nav-cart-trigger" onclick="Cart.openDrawer()" aria-label="Open Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge-count cart-badge-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Off-Canvas Drawer -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+  <aside class="cart-drawer" id="mobileNavDrawer" style="right:auto; left:0; transform:translateX(-100%);">
+    <div class="drawer-header">
+      <div class="flex items-center gap-2">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" style="width:32px; height:32px;">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" style="height:26px; width:auto;">
+      </div>
+      <button type="button" class="drawer-close-btn" id="mobileNavClose" aria-label="Close Menu">×</button>
+    </div>
+    <div style="padding:20px; overflow-y:auto;">
+      <!-- Mobile Search Box -->
+      <div class="header-search-box" style="margin-bottom:20px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="header-search-input" placeholder="Search cotton, nighties, Ramraj..." onkeyup="if(event.key==='Enter') window.location.href='shop.html?search='+encodeURIComponent(this.value)">
+      </div>
+
+      <nav class="flex flex-col gap-4" style="font-size:1.1rem; font-weight:600;">
+        <a href="index.html" class="text-primary">Home</a>
+        <a href="shop.html">Shop All Textiles</a>
+        <a href="shop.html?category=Nighties">Nighties Collection</a>
+        <a href="shop.html?category=Shirts">Men's Shirts</a>
+        <a href="shop.html?category=Pants">Pants & Trousers</a>
+        <a href="shop.html?category=Innerwear">Family Innerwear</a>
+        <a href="wishlist.html">My Wishlist</a>
+        <a href="cart.html">My Shopping Bag</a>
+        <a href="about.html">About Drape</a>
+        <a href="contact.html">Store Location & Contact</a>
+      </nav>
+
+      <div style="margin-top:30px; padding-top:20px; border-top:1px solid var(--color-border); font-size:0.85rem; color:var(--color-text-muted);">
+        <p><strong>📍 Madurai Store:</strong><br>South Masi Street, Near Vilakkuthoon, Madurai 625001</p>
+        <p style="margin-top:8px;"><strong>📞 Phone:</strong> +91 98421 23456</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Slide-In Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" onclick="Cart.closeDrawer()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Bag Drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">Shopping Bag</h3>
+      <button type="button" class="drawer-close-btn" onclick="Cart.closeDrawer()" aria-label="Close Bag">×</button>
+    </div>
+    <div class="cart-drawer-content" id="cartDrawerContent"></div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewOverlay"></div>
+  <div class="quickview-modal" id="quickViewModal">
+    <button type="button" class="modal-close-btn" id="quickViewClose" aria-label="Close Modal">×</button>
+    <div id="quickViewContent"></div>
+  </div>
+
+  <!-- MAIN HOMEPAGE CONTENT -->
+  <main class="site-main">
+
+    <!-- HERO SECTION WITH SLIDER -->
+    <section class="hero-section" aria-label="Featured Textiles">
+      <div class="hero-slider-wrap">
+        <!-- Slide 1 -->
+        <div class="hero-slide active">
+          <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=1600&auto=format&fit=crop&q=80" alt="Madurai Pure Cotton Nighties" class="hero-bg-img">
+        </div>
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=1600&auto=format&fit=crop&q=80" alt="Ramraj Pure Cotton Traditional Shirts" class="hero-bg-img">
+        </div>
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+          <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=1600&auto=format&fit=crop&q=80" alt="Raymond Formal Pants and Trousers" class="hero-bg-img">
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="hero-content reveal-on-scroll">
+          <div class="hero-eyebrow depth-parallax-container">
+            <span class="skiper-106-badge parallax-layer parallax-layer-front">✨ Authentic South Indian Textiles • Est. 1985</span>
+          </div>
+          <h1 class="hero-title skiper-26-reveal depth-parallax-container">
+            <span class="word parallax-layer parallax-layer-back">Madurai’s Heritage of</span> <span class="highlight parallax-layer parallax-layer-front">Comfort</span> <span class="word parallax-layer parallax-layer-mid">& Pure Cotton Elegance.</span>
+          </h1>
+          <p class="hero-desc">
+            Directly from South Masi Street to your doorstep. Experience handcrafted Madurai Sungudi nighties, crisp Ramraj festive shirts, Raymond trousers, and comfort innerwear for the whole family.
+          </p>
+          <div class="hero-actions">
+            <a href="shop.html" class="btn btn-gold btn-pill btn-lg">Explore Catalog →</a>
+            <a href="shop.html?category=Nighties" class="btn btn-outline btn-pill btn-lg" style="color:#FFF; border-color:#FFF;">Shop Nighties</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-indicators">
+        <div class="hero-dot active" onclick="setHeroSlide(0)"></div>
+        <div class="hero-dot" onclick="setHeroSlide(1)"></div>
+        <div class="hero-dot" onclick="setHeroSlide(2)"></div>
+      </div>
+    </section>
+
+    <!-- VALUE PROPOSITIONS (Cult UI Cutout Card) -->
+    <section class="value-props-bar" aria-label="Store Guarantees">
+      <div class="container">
+        <div class="value-props-grid">
+          <div class="value-prop-item cutout-card">
+            <div class="value-prop-icon">🚚</div>
+            <div class="value-prop-text">
+              <h5>Free Express Delivery</h5>
+              <p>Free within Madurai & orders over ₹999</p>
+            </div>
+          </div>
+          <div class="value-prop-item cutout-card">
+            <div class="value-prop-icon">🌿</div>
+            <div class="value-prop-text">
+              <h5>100% Pure Combed Cotton</h5>
+              <p>Hand-inspected for South Indian climates</p>
+            </div>
+          </div>
+          <div class="value-prop-item cutout-card">
+            <div class="value-prop-icon">🏛️</div>
+            <div class="value-prop-text">
+              <h5>Madurai Heritage Since 1985</h5>
+              <p>Trusted by over 50,000+ local families</p>
+            </div>
+          </div>
+          <div class="value-prop-item cutout-card">
+            <div class="value-prop-icon">🔄</div>
+            <div class="value-prop-text">
+              <h5>Hassle-Free Exchange</h5>
+              <p>7-day size exchange & store support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKIPER 63 KINETIC RIBBON MARQUEE -->
+    <div class="skiper-63-ribbon" aria-hidden="true">
+      <div class="skiper-63-track">
+        <span>✨ PURE MADURAI COTTON NIGHTIES</span>
+        <span>•</span>
+        <span>AUTHENTIC RAMRAJ DHOTIS & SHIRTS</span>
+        <span>•</span>
+        <span>JOCKEY COMFORT INNERWEAR</span>
+        <span>•</span>
+        <span>FREE EXPRESS DELIVERY IN MADURAI</span>
+        <span>•</span>
+        <span>DIRECT FROM SOUTH MASI STREET</span>
+        <span>•</span>
+        <span>✨ PURE MADURAI COTTON NIGHTIES</span>
+        <span>•</span>
+        <span>AUTHENTIC RAMRAJ DHOTIS & SHIRTS</span>
+        <span>•</span>
+        <span>JOCKEY COMFORT INNERWEAR</span>
+        <span>•</span>
+        <span>FREE EXPRESS DELIVERY IN MADURAI</span>
+        <span>•</span>
+        <span>DIRECT FROM SOUTH MASI STREET</span>
+      </div>
+    </div>
+
+    <!-- CATEGORY TILES -->
+    <section class="section-pad" aria-label="Textile Categories">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tagline">Curated For Every Family Need</span>
+          <h2 class="section-title">Shop by Textile Category</h2>
+          <p class="section-subtitle">From breathable daily nighties to sharp corporate shirts and innerwear essentials.</p>
+        </div>
+
+        <div class="category-tiles-grid">
+          <!-- Tile 1: Nighties -->
+          <a href="shop.html?category=Nighties" class="category-tile reveal-on-scroll delay-1">
+            <img src="https://cdn.shopify.com/s/files/1/0599/1684/5221/files/3614-C.jpg" alt="Cotton Nighties" class="category-tile-img" loading="lazy">
+            <div class="category-tile-overlay">
+              <h3 class="category-tile-name">Cotton Nighties</h3>
+              <span class="category-tile-count">12 Styles • VNH Naidu Hall, Maybell, Mangai</span>
+            </div>
+          </a>
+
+          <!-- Tile 2: Shirts -->
+          <a href="shop.html?category=Shirts" class="category-tile reveal-on-scroll delay-2">
+            <img src="https://imagescdn.allensolly.com/img/app/product/3/39625431-12932577.jpg" alt="Men's Shirts" class="category-tile-img" loading="lazy">
+            <div class="category-tile-overlay">
+              <h3 class="category-tile-name">Men's Shirts</h3>
+              <span class="category-tile-count">12 Styles • Allen Solly, Rare Rabbit, Otto</span>
+            </div>
+          </a>
+
+          <!-- Tile 3: Tees -->
+          <a href="shop.html?category=Tees" class="category-tile reveal-on-scroll delay-3">
+            <img src="https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1794404798_8535506.jpg" alt="Streetwear Tees" class="category-tile-img" loading="lazy">
+            <div class="category-tile-overlay">
+              <h3 class="category-tile-name">Streetwear Tees</h3>
+              <span class="category-tile-count">8 Styles • The Souled Store, Benetton</span>
+            </div>
+          </a>
+
+          <!-- Tile 4: Pants -->
+          <a href="shop.html?category=Pants" class="category-tile reveal-on-scroll delay-4">
+            <img src="https://cdn.shopify.com/s/files/1/0448/1856/3230/files/white_khaki_trousers.jpg" alt="Pants & Trousers" class="category-tile-img" loading="lazy">
+            <div class="category-tile-overlay">
+              <h3 class="category-tile-name">Pants & Trousers</h3>
+              <span class="category-tile-count">10 Styles • Rare Rabbit, Otto, The Souled Store, Allen Solly</span>
+            </div>
+          </a>
+
+          <!-- Tile 5: Innerwear -->
+          <a href="shop.html?category=Innerwear" class="category-tile reveal-on-scroll delay-5">
+            <img src="https://cdn.shopify.com/s/files/1/0753/1056/3627/products/IC29_EGEPR_0105_S123_JKY_1.webp" alt="Family Innerwear" class="category-tile-img" loading="lazy">
+            <div class="category-tile-overlay">
+              <h3 class="category-tile-name">Family Innerwear</h3>
+              <span class="category-tile-count">18 Styles • Viking, Poomex, Kambit, Prithvi, Ramraj, Jockey</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP BY BRAND MARQUEE -->
+    <section class="brand-marquee-section" aria-label="Partner Brands">
+      <div class="container text-center" style="margin-bottom:18px;">
+        <span class="section-tagline">100% Genuine Certified Brands</span>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <span class="brand-pill">VNH Naidu Hall</span>
+          <span class="brand-pill">Maybell</span>
+          <span class="brand-pill">Mangai</span>
+          <span class="brand-pill">Allen Solly</span>
+          <span class="brand-pill">Rare Rabbit</span>
+          <span class="brand-pill">Otto</span>
+          <span class="brand-pill">The Souled Store</span>
+          <span class="brand-pill">Benetton</span>
+          <span class="brand-pill">Viking</span>
+          <span class="brand-pill">Poomex</span>
+          <span class="brand-pill">Kambit</span>
+          <span class="brand-pill">Prithvi</span>
+          <span class="brand-pill">Ramraj</span>
+          <span class="brand-pill">Jockey</span>
+          <!-- Duplicate for seamless infinite loop -->
+          <span class="brand-pill">VNH Naidu Hall</span>
+          <span class="brand-pill">Maybell</span>
+          <span class="brand-pill">Mangai</span>
+          <span class="brand-pill">Allen Solly</span>
+          <span class="brand-pill">Rare Rabbit</span>
+          <span class="brand-pill">Otto</span>
+          <span class="brand-pill">The Souled Store</span>
+          <span class="brand-pill">Benetton</span>
+          <span class="brand-pill">Viking</span>
+          <span class="brand-pill">Poomex</span>
+          <span class="brand-pill">Kambit</span>
+          <span class="brand-pill">Prithvi</span>
+          <span class="brand-pill">Ramraj</span>
+          <span class="brand-pill">Jockey</span>
+          <span class="brand-pill">Maybell</span>
+          <span class="brand-pill">Mangai Nighties</span>
+          <span class="brand-pill">Ramraj Cotton</span>
+          <span class="brand-pill">Rare Rabbit</span>
+          <span class="brand-pill">Otto</span>
+          <span class="brand-pill">Allen Solly</span>
+          <span class="brand-pill">Benetton</span>
+          <span class="brand-pill">The Souled Store</span>
+          <span class="brand-pill">Prithvi</span>
+          <span class="brand-pill">Jockey</span>
+          <span class="brand-pill">Poomex</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRENDING & NEW ARRIVALS -->
+    <section class="section-pad" aria-label="Trending Products">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tagline">Loved By Madurai Shoppers</span>
+          <h2 class="section-title">Trending & Hot Picks</h2>
+          <p class="section-subtitle">Our most frequently ordered cotton essentials with fast 24-hour dispatch.</p>
+        </div>
+
+        <div class="products-grid" id="homeTrendingGrid">
+          <!-- Dynamically populated from products.js -->
+        </div>
+
+        <div class="text-center" style="margin-top: 40px;">
+          <a href="shop.html" class="btn btn-outline btn-pill btn-lg">View Complete 43+ Collection →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FESTIVE OFFERS COUNTDOWN BANNER -->
+    <section class="container" aria-label="Limited Time Offer">
+      <div class="offer-banner-section reveal-on-scroll">
+        <div class="offer-banner-content">
+          <div>
+            <div class="offer-tag">🔥 Festive Madurai Celebration Offer</div>
+            <h2 class="offer-title">Flat 10% OFF on Your Entire Family Wardrobe</h2>
+            <p class="offer-desc">
+              Use code <strong style="color:var(--color-gold-light); font-size:1.15rem; background:rgba(0,0,0,0.3); padding:2px 8px; border-radius:4px;">HANIFA10</strong> at checkout. Plus enjoy free door delivery across Madurai city on every order.
+            </p>
+            <a href="shop.html" class="btn btn-gold btn-pill">Shop Special Offers Now →</a>
+          </div>
+
+          <div class="text-center">
+            <div style="font-size:0.9rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px; color:var(--color-gold-light);">
+              Offer Ends In:
+            </div>
+            <div class="countdown-box" data-countdown="true">
+              <div class="cd-unit">
+                <div class="cd-number cd-days">02</div>
+                <div class="cd-label">Days</div>
+              </div>
+              <div class="cd-unit">
+                <div class="cd-number cd-hours">14</div>
+                <div class="cd-label">Hours</div>
+              </div>
+              <div class="cd-unit">
+                <div class="cd-number cd-minutes">35</div>
+                <div class="cd-label">Mins</div>
+              </div>
+              <div class="cd-unit">
+                <div class="cd-number cd-seconds">12</div>
+                <div class="cd-label">Secs</div>
+              </div>
+            </div>
+            <span style="font-size:0.8rem; opacity:0.8;">Applicable for all online and store orders.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MADURAI STORE & MAP SECTION -->
+    <section class="section-pad" aria-label="Physical Store Information">
+      <div class="container">
+        <div class="store-section reveal-on-scroll">
+          <div class="store-grid">
+            <div class="store-info-box">
+              <span class="section-tagline">Visit Our Retail Store</span>
+              <h3>Welcome to Hanifa Textiles, Madurai</h3>
+              <p>
+                Located in the historic textile hub of South Masi Street near Vilakkuthoon, our retail showroom has welcomed generations of families for wedding shopping, festive celebrations, and everyday cotton apparel.
+              </p>
+
+              <div class="store-detail-list">
+                <div class="store-detail-item">
+                  <span class="icon">📍</span>
+                  <div>
+                    <strong>Store Address:</strong><br>
+                    South Masi Street, Near Vilakkuthoon, Madurai, Tamil Nadu 625001, India.
+                  </div>
+                </div>
+                <div class="store-detail-item">
+                  <span class="icon">⏰</span>
+                  <div>
+                    <strong>Working Hours:</strong><br>
+                    Monday – Saturday: 9:30 AM to 9:30 PM<br>
+                    Sunday: 10:00 AM to 8:30 PM
+                  </div>
+                </div>
+                <div class="store-detail-item">
+                  <span class="icon">📞</span>
+                  <div>
+                    <strong>Customer Support & Orders:</strong><br>
+                    +91 98421 23456 | care@hanifatextiles.com
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex gap-4" style="flex-wrap:wrap;">
+                <a href="https://maps.app.goo.gl/LUJFigFnc6qnU1Qu6" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-pill">
+                  Open in Google Maps ↗
+                </a>
+                <a href="contact.html" class="btn btn-outline btn-pill">
+                  Contact Store Team
+                </a>
+              </div>
+            </div>
+
+            <div class="store-map-embed">
+              <!-- Madurai South Masi Street Corridor Map Embed -->
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.123456789!2d78.1198!3d9.9155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwNTQnNTUuOCJOIDc4wrAwNycxMS4zIkU!5e0!3m2!1sen!2sin!4v1600000000000"
+                title="Hanifa Textiles Madurai Location Map"
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section-pad" style="background-color:var(--color-cream-dark);" aria-label="Customer Reviews">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-tagline">Trusted Across Tamil Nadu</span>
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-subtitle">Real feedback from families who rely on Hanifa Textiles for quality, comfort, and service.</p>
+        </div>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+          <div class="product-card" style="padding: 24px;">
+            <div style="color:#F39C12; margin-bottom:8px;">★★★★★</div>
+            <p style="font-style:italic; font-size:0.95rem; margin-bottom:16px;">
+              "The Viking pure cotton nighties from Hanifa are unmatched for Madurai heat. After 15+ washes the color and softness are exactly like new. Fast delivery to Anna Nagar too!"
+            </p>
+            <div class="flex items-center gap-2">
+              <strong>Meenakshi Sundaram</strong>
+              <span class="text-muted">• Anna Nagar, Madurai</span>
+            </div>
+          </div>
+
+          <div class="product-card" style="padding: 24px;">
+            <div style="color:#F39C12; margin-bottom:8px;">★★★★★</div>
+            <p style="font-style:italic; font-size:0.95rem; margin-bottom:16px;">
+              "Ordered Ramraj white shirts and Raymond trousers for our family temple function. Flawless packaging, genuine brand tags, and arrived in Dindigul the very next day."
+            </p>
+            <div class="flex items-center gap-2">
+              <strong>K. Saravanan</strong>
+              <span class="text-muted">• Dindigul</span>
+            </div>
+          </div>
+
+          <div class="product-card" style="padding: 24px;">
+            <div style="color:#F39C12; margin-bottom:8px;">★★★★★</div>
+            <p style="font-style:italic; font-size:0.95rem; margin-bottom:16px;">
+              "Very easy to calculate delivery and pay via GPay. The WhatsApp store update gave me complete peace of mind. We have been Hanifa customers since my grandmother's time!"
+            </p>
+            <div class="flex items-center gap-2">
+              <strong>Fathima Zahra</strong>
+              <span class="text-muted">• Tirunelveli</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER SUBSCRIPTION -->
+    <section class="section-pad text-center" aria-label="Newsletter">
+      <div class="container container-sm reveal-on-scroll">
+        <span class="section-tagline">Stay In Touch</span>
+        <h2 class="section-title">Join The Drape Family</h2>
+        <p class="section-subtitle">Receive exclusive festival coupons, new cotton arrival previews, and handloom specials.</p>
+
+        <form class="newsletter-form flex justify-center gap-2" style="max-width:520px; margin:24px auto 0 auto; flex-wrap:wrap;">
+          <input type="email" class="form-control flex-1" placeholder="Enter your email address..." required style="min-width:240px; border-radius:var(--radius-pill);">
+          <button type="submit" class="btn btn-primary btn-pill">Subscribe Now</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="flex items-center gap-2" style="margin-bottom:12px;">
+            <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" style="width:36px; height:36px;">
+            <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" style="height:28px; width:auto;">
+          </div>
+          <p class="footer-tagline">
+            Madurai's premier family textile showroom. Curating authentic South Indian nighties, traditional festive shirts, formal trousers, and comfort innerwear since 1985.
+          </p>
+          <div class="flex gap-2">
+            <span class="pay-badge">100% Genuine</span>
+            <span class="pay-badge">Madurai Dispatch</span>
+            <span class="pay-badge">Direct Weavers</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=Nighties">Cotton Nighties</a></li>
+            <li><a href="shop.html?category=Shirts">Men's Shirts</a></li>
+            <li><a href="shop.html?category=Pants">Pants & Chinos</a></li>
+            <li><a href="shop.html?category=Innerwear">Family Innerwear</a></li>
+            <li><a href="shop.html?offers=true">Festive Offers</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Our Heritage</a></li>
+            <li><a href="contact.html">Store Location & Map</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Shopping Bag</a></li>
+            <li><a href="checkout.html">Track Order</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Madurai Showroom</h4>
+          <div class="footer-contact-item">
+            <span>📍</span>
+            <span>South Masi Street, Near Vilakkuthoon, Madurai, Tamil Nadu 625001</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>📞</span>
+            <span>+91 98421 23456 / 0452 2345678</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>⏰</span>
+            <span>Mon–Sat: 9:30 AM – 9:30 PM<br>Sun: 10:00 AM – 8:30 PM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Drape. All rights reserved. Handcrafted for Madurai & Tamil Nadu.</div>
+        <div class="footer-payment-badges">
+          <span class="pay-badge">UPI / GPay</span>
+          <span class="pay-badge">PhonePe</span>
+          <span class="pay-badge">Paytm</span>
+          <span class="pay-badge">Cash on Delivery</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="#" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Drape on WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zM12.04 20.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.4 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.26-8.24 8.26zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.2-.59.2-1.09.14-1.19-.06-.1-.22-.16-.47-.28z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Chat with our Madurai store</span>
+  </a>
+
+  <!-- Floating Drape Intro Replay Pill -->
+  <button class="replay-intro-pill" id="replay" type="button" onclick="window.drapeIntro && window.drapeIntro.play()" aria-label="Replay drape cloth intro animation">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+    <span>Replay Drape</span>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="data/products.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/drape-intro.js"></script>
+  <script src="js/delivery.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/products-view.js"></script>
+  <script src="js/smooth-ui.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Hero Slider Controller
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.hero-dot');
+
+    function setHeroSlide(index) {
+      currentSlide = index;
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      setHeroSlide(currentSlide);
+    }, 5500);
+
+    // Populate Trending Products on Homepage
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("homeTrendingGrid");
+      if (grid && window.PRODUCTS && window.ProductsView) {
+        const trending = window.PRODUCTS.filter(p => p.isTrending).slice(0, 8);
+        grid.innerHTML = trending.map(p => window.ProductsView.renderCard(p)).join("");
+      }
+    });
+  </script>
+
+  <!-- Fabric Closeup Loop Background (WebGL shader) -->
+  <script>
+  (function () {
+    var LOOP_MS = 14000;
+    var MAX_DPR = 1.5;
+    var canvas = document.getElementById('fabric');
+    if (!canvas) return;
+    var gl = canvas.getContext('webgl2', { antialias: false, alpha: false, powerPreference: 'low-power' });
+    if (!gl) { document.documentElement.classList.add('no-gl'); return; }
+
+    var vs = '#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    var fs = `#version 300 es
+precision highp float;
+uniform vec2 uRes; uniform float uPhase;
+out vec4 o;
+const float PI = 3.14159265;
+
+float H(vec2 p, float t){
+  vec2 q = p;
+  q += 0.35 * vec2(sin(p.y*1.3 + 1.0 + t),     cos(p.x*1.1 + 2.0 + t));
+  q += 0.18 * vec2(sin(q.y*2.7 + 3.0 - 2.0*t), cos(q.x*2.3 + 2.0*t));
+  float h = 0.0;
+  h += 0.55 * sin(dot(q, vec2( 0.80, 0.60)) * 2.2  + t);
+  h += 0.30 * sin(dot(q, vec2(-0.50, 0.87)) * 3.6  - t + 1.7);
+  h += 0.16 * sin(dot(q, vec2( 0.95,-0.30)) * 6.1  + 2.0*t + 0.6);
+  h += 0.07 * sin(dot(q, vec2( 0.20, 0.98)) * 11.0 - 3.0*t);
+  return h;
+}
+float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
+
+void main(){
+  vec2 uv = gl_FragCoord.xy / uRes;
+  vec2 p  = (uv - 0.5) * vec2(uRes.x / uRes.y, 1.0) * 2.4;
+  float t = uPhase;
+
+  float e  = 0.003;
+  float h  = H(p, t);
+  float hx = H(p + vec2(e, 0.0), t);
+  float hy = H(p + vec2(0.0, e), t);
+  vec3 n = normalize(vec3(-(hx - h)/e * 0.25, -(hy - h)/e * 0.25, 1.0));
+
+  vec2 w  = (p + n.xy * 0.06) * 72.0;
+  vec2 fw = fwidth(w);
+  float aa = 1.0 - smoothstep(0.25, 0.7, max(fw.x, fw.y));
+  float tv = sin(fract(w.x) * PI);
+  float th = sin(fract(w.y) * PI);
+  float over = mod(floor(w.x) + floor(w.y), 2.0);
+  float weave = mix(0.7, mix(th, tv, over), aa);
+
+  vec3 L  = normalize(vec3(-0.45 + 0.18*cos(t), 0.55 + 0.18*sin(t), 0.75));
+  vec3 Hh = normalize(L + vec3(0.0, 0.0, 1.0));
+  float d     = clamp(dot(n, L) * 0.5 + 0.55, 0.0, 1.0);
+  float spec  = pow(max(dot(n, Hh), 0.0), 48.0) * (0.7 + 0.3*weave);
+  float sheen = pow(1.0 - n.z, 2.5);
+  float ao    = 0.72 + 0.28 * smoothstep(-1.0, 1.0, h);
+
+  vec3 cA = vec3(1.000, 0.584, 0.000);
+  vec3 cB = vec3(1.000, 0.624, 0.039);
+  vec3 base   = mix(cA, cB, smoothstep(-1.0, 1.0, h));
+  vec3 shadow = vec3(0.60, 0.21, 0.00);
+  vec3 hi     = vec3(1.00, 0.82, 0.45);
+
+  vec3 col = mix(shadow, base, smoothstep(0.15, 0.75, d));
+  col += hi * (spec * 0.55 + sheen * 0.18);
+  col *= ao * (0.86 + 0.14 * weave);
+  col *= 1.0 - 0.55 * dot(uv - 0.5, uv - 0.5);
+  col += (hash(gl_FragCoord.xy) - 0.5) * 0.02;
+  o = vec4(clamp(col, 0.0, 1.0), 1.0);
+}`;
+
+    function sh(type, src){
+      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
+      return s;
+    }
+    var v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
+    if (!v || !f) { document.documentElement.classList.add('no-gl'); return; }
+    var prog = gl.createProgram();
+    gl.attachShader(prog, v); gl.attachShader(prog, f); gl.linkProgram(prog);
+    gl.useProgram(prog);
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(prog, 'a');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+    var uRes = gl.getUniformLocation(prog, 'uRes');
+    var uPhase = gl.getUniformLocation(prog, 'uPhase');
+
+    function resize(){
+      var dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
+      var w = Math.max(1, Math.round(canvas.clientWidth * dpr));
+      var h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      gl.viewport(0, 0, w, h);
+      gl.uniform2f(uRes, w, h);
+    }
+    function drawFrame(ms){
+      gl.uniform1f(uPhase, (ms % LOOP_MS) / LOOP_MS * 2 * Math.PI);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+    function loop(now){ drawFrame(now); requestAnimationFrame(loop); }
+
+    window.addEventListener('resize', function(){ resize(); if (reduce) drawFrame(STILL_MS); });
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var STILL_MS = LOOP_MS * 0.8;
+    resize();
+    if (reduce) drawFrame(STILL_MS); else requestAnimationFrame(loop);
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+/**
+ * Hanifa Textiles - Responsive Design System
+ * Tested from 360px compact screens to 1440px+ ultra-wide desktops.
+ */
+
+/* ==========================================================================
+   TABLET & MOBILE BREAKPOINTS (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .header-search-wrap {
+    display: none; /* Moved into mobile drawer */
+  }
+
+  .value-props-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .category-tiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .shop-page-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filter sidebar becomes off-canvas drawer on tablet/mobile */
+  .filter-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 85vw;
+    z-index: calc(var(--z-drawer) + 1);
+    border-radius: 0;
+    transform: translateX(-100%);
+    transition: transform var(--transition-smooth);
+    overflow-y: auto;
+  }
+
+  .filter-sidebar.drawer-active {
+    transform: translateX(0);
+  }
+
+  .btn-filter-trigger-mobile {
+    display: inline-flex !important;
+  }
+
+  .pdp-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .checkout-page-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .store-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-banner-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .countdown-box {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   MOBILE PHONES (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .site-header .header-inner {
+    height: var(--header-height-mobile);
+  }
+
+  .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .brand-logo-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .header-actions {
+    gap: 10px;
+  }
+
+  .header-action-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-section {
+    min-height: 480px;
+  }
+
+  .hero-content {
+    padding: 24px 0;
+  }
+
+  .value-props-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .category-tiles-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .category-tile-overlay {
+    padding: 14px;
+  }
+
+  .category-tile-name {
+    font-size: 1.15rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .card-content {
+    padding: 12px;
+  }
+
+  .card-title {
+    font-size: 0.875rem;
+    height: 2.6em;
+  }
+
+  .price-current {
+    font-size: 1rem;
+  }
+
+  .card-overlay-actions {
+    display: none; /* Mobile taps card to open product page */
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .quickview-modal {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .quickview-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .qv-hero-img {
+    height: 260px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .step-indicator span:not(.step-num) {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   COMPACT SCREENS (max-width: 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 10px 18px;
+    font-size: 0.875rem;
+  }
+
+  .cart-drawer {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .cd-unit {
+    min-width: 54px;
+    padding: 8px 10px;
+  }
+
+  .cd-number {
+    font-size: 1.35rem;
+  }
+
+  .whatsapp-float {
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .replay-intro-pill {
+    bottom: 80px;
+    left: 20px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
+  }
+}

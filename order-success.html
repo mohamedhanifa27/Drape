@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Placed Successfully | Drape Madurai</title>
+    <!-- Webpage Icons / Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/drape-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/lenis.css">
+  <link rel="stylesheet" href="css/smooth-ui.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Anti-FOUC Theme Initializer -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem("hanifa_theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+</head>
+<body style="background-color:var(--color-bg);">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner" style="height:70px;">
+      <a href="index.html" class="brand-logo" aria-label="Drape Home">
+        <img src="assets/images/drape-icon.png" class="drape-icon-img" alt="Drape" width="36" height="36">
+        <img src="assets/images/drape-logo.png" class="drape-logo-img" alt="Drape" height="28">
+      </a>
+      <a href="shop.html" class="btn btn-outline btn-sm btn-pill">Continue Shopping →</a>
+    </div>
+  </header>
+
+  <!-- Confetti Canvas Container -->
+  <div id="confettiContainer" style="position:fixed; inset:0; pointer-events:none; z-index:999; overflow:hidden;"></div>
+
+  <!-- MAIN CONFIRMATION CARD -->
+  <main class="site-main container">
+    <div class="order-success-card">
+
+      <!-- Animated SVG Checkmark -->
+      <svg class="success-checkmark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="success-checkmark-circle" cx="26" cy="26" r="25"/>
+        <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+
+      <span class="section-tagline" style="color:var(--color-success);">Order Confirmed! Nandri!</span>
+      <h1 style="font-size:2rem; margin:6px 0 12px 0;">Thank You for Shopping with Drape</h1>
+      <p style="color:var(--color-text-muted); font-size:0.95rem; max-width:540px; margin:0 auto;">
+        Your order has been received at our South Masi Street retail store in Madurai. Our textile packing team is preparing your package for dispatch.
+      </p>
+
+      <div class="order-id-badge" id="successOrderId">Order #HT-XXXXXX</div>
+
+      <!-- Key Delivery & SLA Highlight -->
+      <div style="background-color:var(--color-cream); border:1.5px solid var(--color-border); border-radius:var(--radius-md); padding:18px; margin:20px 0; text-align:left;">
+        <div class="flex items-center gap-2" style="margin-bottom:6px;">
+          <span style="font-size:1.4rem;">🚚</span>
+          <strong style="font-size:1.1rem; color:var(--color-primary-dark);" id="successEtaText">Arrives in 1-2 business days</strong>
+        </div>
+        <p style="font-size:0.85rem; color:var(--color-text-muted); margin:0;" id="successAddressSummary">
+          Delivering to your registered address.
+        </p>
+      </div>
+
+      <!-- Detailed Receipt Box -->
+      <div class="order-summary-box" id="successOrderDetails">
+        <h4 style="font-size:1.1rem; margin-bottom:14px; border-bottom:1px solid var(--color-border); padding-bottom:8px;">Order Summary</h4>
+        <div id="successItemsList" class="flex flex-col gap-2" style="margin-bottom:16px;"></div>
+        <div class="drawer-summary-row" style="font-size:0.95rem;">
+          <span>Payment Method</span>
+          <strong id="successPaymentMethod">UPI / GPay</strong>
+        </div>
+        <div class="drawer-summary-row total-row" style="margin-bottom:0; font-size:1.2rem;">
+          <span>Total Paid / Payable</span>
+          <strong id="successTotalAmount" style="color:var(--color-primary);">₹0</strong>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex justify-center gap-4" style="flex-wrap:wrap; margin-top:28px;">
+        <!-- WhatsApp Share to Store -->
+        <a href="#" class="btn btn-primary btn-pill" id="btnShareWhatsApp" target="_blank" rel="noopener noreferrer" style="background-color:#25D366; border-color:#25D366; color:#FFF;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.92-9.91-9.92zM12.04 20.17c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.4 0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.26-8.24 8.26zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.76-1.85-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.61.12.17 1.77 2.7 4.29 3.78.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.2-.59.2-1.09.14-1.19-.06-.1-.22-.16-.47-.28z"/>
+          </svg>
+          Send Order Details on WhatsApp
+        </a>
+
+        <!-- Print Invoice Button -->
+        <button type="button" class="btn btn-outline btn-pill" onclick="window.print()">
+          🖨️ Print / Save Receipt
+        </button>
+
+        <a href="shop.html" class="btn btn-gold btn-pill">
+          Continue Shopping →
+        </a>
+      </div>
+
+      <div style="margin-top:24px; font-size:0.8rem; color:var(--color-text-muted);">
+        Questions about your order? Call our South Masi Street team anytime at <strong>+91 98421 23456</strong>.
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="data/products.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/smooth-ui.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Confetti generator
+    function launchConfetti() {
+      const container = document.getElementById("confettiContainer");
+      if (!container) return;
+      const colors = ["#7A1F2B", "#C9A24B", "#25D366", "#E5C875", "#1E7E34"];
+      for (let i = 0; i < 60; i++) {
+        const conf = document.createElement("div");
+        conf.style.position = "absolute";
+        conf.style.left = Math.random() * 100 + "vw";
+        conf.style.top = "-20px";
+        conf.style.width = Math.random() * 8 + 6 + "px";
+        conf.style.height = Math.random() * 12 + 6 + "px";
+        conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        conf.style.borderRadius = "2px";
+        conf.style.animation = `confettiFall ${Math.random() * 2 + 2.5}s ease-in-out ${Math.random() * 1}s forwards`;
+        container.appendChild(conf);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      launchConfetti();
+
+      // Retrieve latest order from sessionStorage or query param
+      const urlParams = new URLSearchParams(window.location.search);
+      const orderIdParam = urlParams.get("orderId");
+
+      let order = null;
+      try {
+        const stored = sessionStorage.getItem("hanifa_latest_order");
+        if (stored) order = JSON.parse(stored);
+      } catch (e) {}
+
+      if (!order) {
+        // Fallback to localStorage orders list
+        try {
+          const allOrders = JSON.parse(localStorage.getItem("hanifa_orders") || "[]");
+          if (allOrders.length > 0) order = allOrders[0];
+        } catch (e) {}
+      }
+
+      if (order) {
+        document.getElementById("successOrderId").textContent = `Order #${order.orderId}`;
+        if (order.delivery && order.delivery.eta) {
+          document.getElementById("successEtaText").textContent = order.delivery.eta;
+        }
+        if (order.customer) {
+          document.getElementById("successAddressSummary").textContent = 
+            `Deliver to: ${order.customer.fullName}, ${order.customer.house}, ${order.customer.area}, ${order.customer.city} (${order.customer.pincode}) • Phone: ${order.customer.phone}`;
+        }
+        if (order.totals) {
+          document.getElementById("successTotalAmount").textContent = `₹${order.totals.grandTotal}`;
+        }
+        if (order.payment) {
+          document.getElementById("successPaymentMethod").textContent = 
+            order.payment.method === "UPI" ? `UPI (UTR: ${order.payment.upiTxnId || "Recorded"})` : "Cash on Delivery (COD)";
+        }
+
+        // Items list
+        const itemsList = document.getElementById("successItemsList");
+        if (itemsList && order.items) {
+          itemsList.innerHTML = order.items.map(it => `
+            <div class="flex justify-between" style="font-size:0.9rem; padding:4px 0; border-bottom:1px dashed var(--color-border);">
+              <span>${it.name} (${it.size}) × ${it.quantity}</span>
+              <strong>₹${it.price * it.quantity}</strong>
+            </div>
+          `).join("");
+        }
+
+        // WhatsApp Share link
+        const waBtn = document.getElementById("btnShareWhatsApp");
+        if (waBtn) {
+          const storePhone = (CONFIG && CONFIG.STORE && CONFIG.STORE.whatsapp) || "919842123456";
+          const itemSummary = order.items ? order.items.map(i => `${i.name} (${i.size}) x${i.quantity}`).join(", ") : "Textiles";
+          const text = encodeURIComponent(
+            `Vanakkam Drape! I have placed Order #${order.orderId}.\n\nItems: ${itemSummary}\nTotal: ₹${order.totals.grandTotal}\nPayment: ${order.payment.method}\nDeliver to: ${order.customer.fullName}, ${order.customer.city} (${order.customer.pincode})\nPhone: ${order.customer.phone}\n\nPlease confirm dispatch from Madurai store.`
+          );
+          waBtn.href = `https://wa.me/${storePhone}?text=${text}`;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

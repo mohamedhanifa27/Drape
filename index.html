@@ -56,32 +56,6 @@
     "priceRange": "₹280 - ₹2500"
   }
   </script>
-  <!-- Fabric Background Canvas Styles -->
-  <style>
-    #fabric { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; pointer-events: none; }
-    .no-gl #fabric { display: none; }
-    /* Make page content sit above the canvas with readable backgrounds */
-    .site-main, .site-footer, .header-topbar { position: relative; z-index: 1; }
-    /* Body becomes transparent so canvas shows; fallback gradient for no-WebGL */
-    body { background: transparent; }
-    .no-gl body { background-color: var(--color-bg); }
-    .site-main > section,
-    .site-main > .container,
-    .site-main > div:not(.skiper-63-ribbon) {
-      background-color: rgba(var(--fabric-overlay-rgb, 250, 248, 245), 0.92);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-    }
-    [data-theme="dark"] .site-main > section,
-    [data-theme="dark"] .site-main > .container,
-    [data-theme="dark"] .site-main > div:not(.skiper-63-ribbon) {
-      background-color: rgba(22, 22, 23, 0.92);
-    }
-    /* Hero sits directly on the fabric — no overlay needed */
-    .hero-section { background-color: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
-    /* Ribbon marquee stays transparent */
-    .skiper-63-ribbon { background-color: transparent !important; backdrop-filter: none !important; }
-  </style>
 
   <!-- Anti-FOUC Theme Initializer -->
   <script>
@@ -94,9 +68,6 @@
   </script>
 </head>
 <body>
-
-  <!-- Fabric Closeup Loop Background Canvas -->
-  <canvas id="fabric" aria-hidden="true"></canvas>
 
   <!-- Drape Cloth Intro Animation (drape-intro-animation.html) -->
   <div id="drape-intro" role="img" aria-label="drape — Hanifa Textiles">
@@ -778,119 +749,6 @@
         grid.innerHTML = trending.map(p => window.ProductsView.renderCard(p)).join("");
       }
     });
-  </script>
-
-  <!-- Fabric Closeup Loop Background (WebGL shader) -->
-  <script>
-  (function () {
-    var LOOP_MS = 14000;
-    var MAX_DPR = 1.5;
-    var canvas = document.getElementById('fabric');
-    if (!canvas) return;
-    var gl = canvas.getContext('webgl2', { antialias: false, alpha: false, powerPreference: 'low-power' });
-    if (!gl) { document.documentElement.classList.add('no-gl'); return; }
-
-    var vs = '#version 300 es\nin vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
-    var fs = `#version 300 es
-precision highp float;
-uniform vec2 uRes; uniform float uPhase;
-out vec4 o;
-const float PI = 3.14159265;
-
-float H(vec2 p, float t){
-  vec2 q = p;
-  q += 0.35 * vec2(sin(p.y*1.3 + 1.0 + t),     cos(p.x*1.1 + 2.0 + t));
-  q += 0.18 * vec2(sin(q.y*2.7 + 3.0 - 2.0*t), cos(q.x*2.3 + 2.0*t));
-  float h = 0.0;
-  h += 0.55 * sin(dot(q, vec2( 0.80, 0.60)) * 2.2  + t);
-  h += 0.30 * sin(dot(q, vec2(-0.50, 0.87)) * 3.6  - t + 1.7);
-  h += 0.16 * sin(dot(q, vec2( 0.95,-0.30)) * 6.1  + 2.0*t + 0.6);
-  h += 0.07 * sin(dot(q, vec2( 0.20, 0.98)) * 11.0 - 3.0*t);
-  return h;
-}
-float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
-
-void main(){
-  vec2 uv = gl_FragCoord.xy / uRes;
-  vec2 p  = (uv - 0.5) * vec2(uRes.x / uRes.y, 1.0) * 2.4;
-  float t = uPhase;
-
-  float e  = 0.003;
-  float h  = H(p, t);
-  float hx = H(p + vec2(e, 0.0), t);
-  float hy = H(p + vec2(0.0, e), t);
-  vec3 n = normalize(vec3(-(hx - h)/e * 0.25, -(hy - h)/e * 0.25, 1.0));
-
-  vec2 w  = (p + n.xy * 0.06) * 72.0;
-  vec2 fw = fwidth(w);
-  float aa = 1.0 - smoothstep(0.25, 0.7, max(fw.x, fw.y));
-  float tv = sin(fract(w.x) * PI);
-  float th = sin(fract(w.y) * PI);
-  float over = mod(floor(w.x) + floor(w.y), 2.0);
-  float weave = mix(0.7, mix(th, tv, over), aa);
-
-  vec3 L  = normalize(vec3(-0.45 + 0.18*cos(t), 0.55 + 0.18*sin(t), 0.75));
-  vec3 Hh = normalize(L + vec3(0.0, 0.0, 1.0));
-  float d     = clamp(dot(n, L) * 0.5 + 0.55, 0.0, 1.0);
-  float spec  = pow(max(dot(n, Hh), 0.0), 48.0) * (0.7 + 0.3*weave);
-  float sheen = pow(1.0 - n.z, 2.5);
-  float ao    = 0.72 + 0.28 * smoothstep(-1.0, 1.0, h);
-
-  vec3 cA = vec3(1.000, 0.584, 0.000);
-  vec3 cB = vec3(1.000, 0.624, 0.039);
-  vec3 base   = mix(cA, cB, smoothstep(-1.0, 1.0, h));
-  vec3 shadow = vec3(0.60, 0.21, 0.00);
-  vec3 hi     = vec3(1.00, 0.82, 0.45);
-
-  vec3 col = mix(shadow, base, smoothstep(0.15, 0.75, d));
-  col += hi * (spec * 0.55 + sheen * 0.18);
-  col *= ao * (0.86 + 0.14 * weave);
-  col *= 1.0 - 0.55 * dot(uv - 0.5, uv - 0.5);
-  col += (hash(gl_FragCoord.xy) - 0.5) * 0.02;
-  o = vec4(clamp(col, 0.0, 1.0), 1.0);
-}`;
-
-    function sh(type, src){
-      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
-      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
-      return s;
-    }
-    var v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
-    if (!v || !f) { document.documentElement.classList.add('no-gl'); return; }
-    var prog = gl.createProgram();
-    gl.attachShader(prog, v); gl.attachShader(prog, f); gl.linkProgram(prog);
-    gl.useProgram(prog);
-
-    var buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
-    var loc = gl.getAttribLocation(prog, 'a');
-    gl.enableVertexAttribArray(loc);
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-    var uRes = gl.getUniformLocation(prog, 'uRes');
-    var uPhase = gl.getUniformLocation(prog, 'uPhase');
-
-    function resize(){
-      var dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
-      var w = Math.max(1, Math.round(canvas.clientWidth * dpr));
-      var h = Math.max(1, Math.round(canvas.clientHeight * dpr));
-      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-      gl.viewport(0, 0, w, h);
-      gl.uniform2f(uRes, w, h);
-    }
-    function drawFrame(ms){
-      gl.uniform1f(uPhase, (ms % LOOP_MS) / LOOP_MS * 2 * Math.PI);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    }
-    function loop(now){ drawFrame(now); requestAnimationFrame(loop); }
-
-    window.addEventListener('resize', function(){ resize(); if (reduce) drawFrame(STILL_MS); });
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var STILL_MS = LOOP_MS * 0.8;
-    resize();
-    if (reduce) drawFrame(STILL_MS); else requestAnimationFrame(loop);
-  })();
   </script>
 </body>
 </html>

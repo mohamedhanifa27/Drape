@@ -242,6 +242,11 @@ button {
   color: #FFFFFF;
 }
 
+[data-theme="dark"] .btn-outline:hover {
+  background-color: #FF9F0A;
+  color: #161617;
+}
+
 .btn-white {
   background-color: var(--color-bg-card, #FFFFFF);
   color: var(--color-text-main);

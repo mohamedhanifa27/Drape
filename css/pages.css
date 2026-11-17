@@ -752,25 +752,103 @@
   margin-top: 8px;
 }
 
+.calc-pulse,
+.checking-spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 8px 12px;
+  background-color: var(--color-primary-subtle);
+  border-radius: var(--radius-sm);
+  margin-top: 8px;
+}
+
+[data-theme="dark"] .calc-pulse,
+[data-theme="dark"] .checking-spinner {
+  background-color: rgba(255, 159, 10, 0.16);
+  color: #FF9F0A;
+}
+
+.live-pincode-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  background-color: var(--color-bg-card, #FFFFFF);
+  border: 1px solid var(--color-border);
+  border-left: 3.5px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  margin-top: 10px;
+  font-size: 0.88rem;
+  color: var(--color-text-main);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .live-pincode-card {
+  background-color: #252528;
+  border-color: rgba(250, 248, 245, 0.16);
+  border-left-color: #FF9F0A;
+  color: #FAF8F5;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.live-pincode-card strong {
+  color: var(--color-text-headings);
+}
+
+[data-theme="dark"] .live-pincode-card strong {
+  color: #FFFFFF;
+}
+
 .pincode-success-card {
   margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--color-border);
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-card);
   font-size: 0.875rem;
+  color: var(--color-text-main);
+}
+
+[data-theme="dark"] .pincode-success-card {
+  background-color: #252528;
+  border-color: rgba(250, 248, 245, 0.16);
+  color: #FAF8F5;
 }
 
 .pincode-row {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  color: inherit;
+}
+
+.pincode-row strong {
+  color: var(--color-text-headings);
+}
+
+[data-theme="dark"] .pincode-row strong {
+  color: #FFFFFF;
 }
 
 .pincode-row.highlight {
   font-size: 0.95rem;
   color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .pincode-row.highlight {
+  color: #FF9F0A;
 }
 
 .pincode-row.subtitle {
   font-size: 0.75rem;
   color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .pincode-row.subtitle {
+  color: #D0CDC7;
 }
 
 /* PDP Tabs */
@@ -959,6 +1037,12 @@
   margin-bottom: 24px;
 }
 
+[data-theme="dark"] .shipping-details-card {
+  background-color: #212124;
+  border-color: rgba(250, 248, 245, 0.16);
+  color: #FAF8F5;
+}
+
 .route-header {
   display: flex;
   align-items: center;
@@ -968,6 +1052,11 @@
   margin-bottom: 18px;
   padding-bottom: 12px;
   border-bottom: 1px dashed var(--color-border);
+}
+
+[data-theme="dark"] .route-header {
+  color: #FAF8F5;
+  border-bottom-color: rgba(250, 248, 245, 0.16);
 }
 
 .metrics-grid {
@@ -984,8 +1073,16 @@
   text-transform: uppercase;
 }
 
+[data-theme="dark"] .metric-box label {
+  color: #D0CDC7;
+}
+
 .metric-box strong {
   font-size: 1.1rem;
+}
+
+[data-theme="dark"] .metric-box strong {
+  color: #FAF8F5;
 }
 
 /* UPI Payment Presentation */
@@ -996,6 +1093,12 @@
   padding: 24px;
   text-align: center;
   margin-top: 16px;
+}
+
+[data-theme="dark"] .upi-payment-box {
+  background-color: #212124;
+  border-color: rgba(250, 248, 245, 0.16);
+  color: #FAF8F5;
 }
 
 .qr-code-frame {

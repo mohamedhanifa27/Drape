@@ -116,8 +116,8 @@ STORE: {
   address: "South Masi Street, Near Vilakkuthoon, Madurai, Tamil Nadu 625001",
   lat: 9.9155,
   lng: 78.1198,
-  phone: "+91 98421 23456",
-  whatsapp: "919842123456", // E.164 formatted for WhatsApp links
+  phone: "+91 98XXX XXXXX",
+  whatsapp: "9198XXXXXXXX", // E.164 formatted for WhatsApp links
   mapsLink: "https://maps.app.goo.gl/LUJFigFnc6qnU1Qu6"
 }
 ```
